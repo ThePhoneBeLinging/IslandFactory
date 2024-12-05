@@ -14,35 +14,35 @@ void Island::setTexture(const std::shared_ptr<EngineBase>& _enginebase, const st
 }
 
 void Island::setX(const double _x) {
-    x = _x;
+    island_draw_able_->setX(_x);
 }
 
 void Island::setY(const double _y) {
-    y = _y;
+    island_draw_able_->setY(_y);
 }
 
 double Island::getX() const {
-    return x;
+    return island_draw_able_->getX();
 }
 
 double Island::getY() const {
-    return y;
+    return island_draw_able_->getY();
 }
 
 void Island::setHeight(const int _height) {
-    height = _height;
+    island_draw_able_->setHeight(_height);
 }
 
 void Island::setWidth(const int _width) {
-    width = _width;
+    island_draw_able_->setWidth(_width);
 }
 
 int Island::getHeight() const {
-    return height;
+    return island_draw_able_->getHeight();
 }
 
 int Island::getWidth() const {
-    return width;
+    return island_draw_able_->getWidth();
 }
 
 std::shared_ptr<DrawAble> Island::get_drawable() {
