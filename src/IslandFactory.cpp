@@ -3,9 +3,6 @@
 //
 
 #include "IslandFactory.h"
-
-#include <iostream>
-
 #include "Controllers/GameController.h"
 
 void IslandFactory::launch()
