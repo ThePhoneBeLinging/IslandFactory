@@ -7,6 +7,8 @@ Island::Island() {
     island_draw_able_->setWidth(width);
     island_draw_able_->setX(x - static_cast<double>(island_draw_able_->getWidth())/2);
     island_draw_able_->setY(y - static_cast<double>(island_draw_able_->getHeight())/2);
+
+    aspect = static_cast<double>(island_draw_able_->getWidth()) / island_draw_able_->getHeight();
 }
 
 void Island::setTexture(const std::shared_ptr<EngineBase>& _enginebase, const std::string& image) const {
@@ -31,10 +33,12 @@ double Island::getY() const {
 
 void Island::setHeight(const int _height) {
     island_draw_able_->setHeight(_height);
+    island_draw_able_->setWidth(static_cast<int>(aspect) * island_draw_able_->getHeight());
 }
 
 void Island::setWidth(const int _width) {
     island_draw_able_->setWidth(_width);
+    island_draw_able_->setHeight(static_cast<int>(island_draw_able_->getWidth() / aspect));
 }
 
 int Island::getHeight() const {

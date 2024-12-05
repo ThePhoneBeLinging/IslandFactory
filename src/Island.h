@@ -27,6 +27,7 @@ private:
     std::shared_ptr<DrawAble> island_draw_able_;
     int width = 100;
     int height = 100;
+    double aspect;
     double x = 200;
     double y = 200;
 };
