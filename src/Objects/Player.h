@@ -11,7 +11,7 @@ class Player : public DrawAble
 {
 public:
     Player();
-    double getMovementSpeed() const;
+    [[nodiscard]] double getMovementSpeed() const;
 private:
     double movementSpeed_;
 };
