@@ -8,7 +8,7 @@
 #include <memory>
 #include <vector>
 
-#include "../Objects/Player.h"
+#include "Player.h"
 #include "EngineBase/EngineBase.h"
 
 

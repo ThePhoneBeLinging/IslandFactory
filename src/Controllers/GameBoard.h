@@ -7,7 +7,7 @@
 #include <memory>
 #include <vector>
 
-#include "../Objects/Tiles/Tile.h"
+#include "Tiles/Tile.h"
 #include "EngineBase/EngineBase.h"
 
 

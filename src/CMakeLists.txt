@@ -18,4 +18,5 @@ add_executable(IslandFactory
 target_link_libraries(IslandFactory EngineBase)
 
 target_include_directories(IslandFactory PRIVATE Controllers)
+target_include_directories(IslandFactory PRIVATE Objects)
 target_include_directories(IslandFactory PRIVATE Textures)
