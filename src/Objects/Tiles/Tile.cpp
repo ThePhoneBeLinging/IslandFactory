@@ -3,3 +3,9 @@
 //
 
 #include "Tile.h"
+
+Tile::Tile()
+{
+    width_ = TILESIZE;
+    height_ = TILESIZE;
+}

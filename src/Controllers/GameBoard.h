@@ -7,6 +7,7 @@
 #include <memory>
 #include <vector>
 
+#include "../Objects/Tiles/Tile.h"
 #include "EngineBase/EngineBase.h"
 
 
@@ -16,6 +17,7 @@ public:
     explicit GameBoard(std::shared_ptr<EngineBase>& engineBase);
 
 private:
+    std::vector<std::vector<std::shared_ptr<Tile>>> tileMatrix_;
     std::shared_ptr<EngineBase> engineBase_;
 };
 

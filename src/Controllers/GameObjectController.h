@@ -4,6 +4,7 @@
 
 #ifndef GAMEOBJECTCONTROLLER_H
 #define GAMEOBJECTCONTROLLER_H
+#include <GameBoard.h>
 #include <memory>
 #include <vector>
 
@@ -18,6 +19,7 @@ public:
     void handleMovement(double deltaTime);
 
 private:
+    std::shared_ptr<GameBoard> gameBoard_;
     std::shared_ptr<EngineBase> engineBase_;
     std::shared_ptr<Player> player_;
 };

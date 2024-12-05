@@ -9,7 +9,8 @@
 class Tile : public DrawAble
 {
 public:
-    Tile() = default;
+    Tile();
+    static inline const int TILESIZE = 50;
 };
 
 
