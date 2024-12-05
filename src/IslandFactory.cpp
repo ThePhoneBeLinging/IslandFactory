@@ -8,7 +8,7 @@ IslandFactory::IslandFactory()
 
 void IslandFactory::start() const {
     Island main_island;
-    main_island.setTextureIndex(engineBase_);
+    main_island.setTextureIndex(engineBase_, "Island");
     engineBase_->registerDrawAble(main_island.get_drawable());
     engineBase_->launch();
 }
