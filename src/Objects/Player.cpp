@@ -4,7 +4,7 @@
 
 #include "Player.h"
 
-Player::Player() : DrawAble()
+Player::Player()
 {
     height_ = 50;
     width_ = 50;
