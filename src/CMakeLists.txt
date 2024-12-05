@@ -12,6 +12,8 @@ add_executable(IslandFactory
         Objects/Player.cpp
         Objects/Player.h
         TextureList.h
+        Objects/GameObjectController.cpp
+        Objects/GameObjectController.h
 )
 
 
