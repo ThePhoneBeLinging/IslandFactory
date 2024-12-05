@@ -14,7 +14,9 @@ class GameController
 {
 public:
     explicit GameController(std::shared_ptr<EngineBase> engineBase);
+    void update(double deltaTime);
 private:
+    void handleInput(double deltaTime);
     std::shared_ptr<Player> player_;
     std::shared_ptr<EngineBase> engineBase_;
 };

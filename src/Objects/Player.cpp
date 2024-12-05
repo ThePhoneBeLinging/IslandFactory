@@ -8,4 +8,10 @@ Player::Player()
 {
     height_ = 50;
     width_ = 50;
+    movementSpeed_ = 500;
+}
+
+double Player::getMovementSpeed() const
+{
+    return movementSpeed_;
 }

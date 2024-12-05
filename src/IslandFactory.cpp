@@ -15,5 +15,6 @@ void IslandFactory::launch()
 
 void IslandFactory::update(const double deltaTime)
 {
-    std::cout << "Update func: " << deltaTime << std::endl;
+    //std::cout << "Update func: " << deltaTime << std::endl;
+    gameController_->update(deltaTime);
 }
