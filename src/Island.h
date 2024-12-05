@@ -23,6 +23,9 @@ public:
 
     std::shared_ptr<DrawAble> get_drawable();
 
+    void setClickState(bool _newClickstate);
+    [[nodiscard]] bool getClickState() const;
+
 private:
     std::shared_ptr<DrawAble> island_draw_able_;
     int width = 100;
@@ -30,6 +33,7 @@ private:
     double aspect;
     double x = 200;
     double y = 200;
+    bool is_clicked;
 };
 
 

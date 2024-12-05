@@ -9,6 +9,7 @@ Island::Island() {
     island_draw_able_->setY(y - static_cast<double>(island_draw_able_->getHeight())/2);
 
     aspect = static_cast<double>(island_draw_able_->getWidth()) / island_draw_able_->getHeight();
+    is_clicked = false;
 }
 
 void Island::setTexture(const std::shared_ptr<EngineBase>& _enginebase, const std::string& image) const {
@@ -51,4 +52,12 @@ int Island::getWidth() const {
 
 std::shared_ptr<DrawAble> Island::get_drawable() {
     return island_draw_able_;
+}
+
+void Island::setClickState(const bool _newClickstate) {
+    is_clicked = _newClickstate;
+}
+
+bool Island::getClickState() const {
+    return is_clicked;
 }
