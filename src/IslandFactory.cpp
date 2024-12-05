@@ -7,6 +7,8 @@
 void IslandFactory::launch()
 {
     engineBase_ = std::make_shared<EngineBase>();
+    gameController_ = std::make_shared<GameController>(engineBase_);
+
     engineBase_->registerUpdateFunction(&update);
     engineBase_->launch();
 }

@@ -7,6 +7,10 @@ add_executable(IslandFactory
         main.cpp
         IslandFactory.cpp
         IslandFactory.h
+        GameController.cpp
+        GameController.h
+        Objects/Player.cpp
+        Objects/Player.h
 )
 
 
