@@ -7,6 +7,8 @@ add_executable(IslandFactory
         main.cpp
         IslandFactory.cpp
         IslandFactory.h
+        Island.cpp
+        Island.h
 )
 
 
