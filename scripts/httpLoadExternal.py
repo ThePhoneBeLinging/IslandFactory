@@ -33,7 +33,7 @@ def main():
     # Clone or pull each repository
     for repo_url in repo_urls:
         path = "dependencies"
-        if (os.getcwd().endswith("Scripts")):
+        if (os.getcwd().endswith("scripts")):
             path = "../dependencies"
         clone_or_pull(repo_url, path)
     ensure_dir_exists("Resources")
