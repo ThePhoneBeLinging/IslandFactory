@@ -6,6 +6,8 @@
 
 #include <iostream>
 
+#include "Controllers/GameController.h"
+
 void IslandFactory::launch()
 {
     engineBase_ = std::make_shared<EngineBase>();

@@ -6,14 +6,9 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(IslandFactory
         main.cpp
         IslandFactory.cpp
-        IslandFactory.h
-        GameController.cpp
-        GameController.h
+        Controllers/GameController.cpp
         Objects/Player.cpp
-        Objects/Player.h
-        TextureList.h
-        Objects/GameObjectController.cpp
-        Objects/GameObjectController.h
+        Controllers/GameObjectController.cpp
 )
 
 

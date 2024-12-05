@@ -7,7 +7,7 @@
 #include <memory>
 #include <vector>
 
-#include "Player.h"
+#include "../Objects/Player.h"
 #include "EngineBase/EngineBase.h"
 
 
@@ -16,11 +16,11 @@ class GameObjectController
 public:
     explicit GameObjectController(std::shared_ptr<EngineBase>& engineBase);
     void handleMovement(double deltaTime);
+
 private:
     std::shared_ptr<EngineBase> engineBase_;
     std::shared_ptr<Player> player_;
 };
-
 
 
 #endif //GAMEOBJECTCONTROLLER_H
