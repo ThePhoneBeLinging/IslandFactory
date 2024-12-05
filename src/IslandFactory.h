@@ -14,6 +14,8 @@ public:
     void start();
 private:
     std::shared_ptr<EngineBase> engineBase_;
+    std::shared_ptr<DrawAble> draw_able_;
+    void draw_island();
 };
 
 
