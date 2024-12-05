@@ -1,7 +1,4 @@
-#include <iostream>
-
 #include "IslandFactory.h"
-#include "EngineBase/EngineBase.h"
 
 int main()
 {
