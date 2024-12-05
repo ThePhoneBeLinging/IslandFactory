@@ -3,7 +3,6 @@
 //
 
 #include "IslandFactory.h"
-#include <iostream>
 void IslandFactory::launch()
 {
     engineBase_ = std::make_shared<EngineBase>();
@@ -15,6 +14,5 @@ void IslandFactory::launch()
 
 void IslandFactory::update(const double deltaTime)
 {
-    //std::cout << "Update func: " << deltaTime << std::endl;
     gameController_->update(deltaTime);
 }
