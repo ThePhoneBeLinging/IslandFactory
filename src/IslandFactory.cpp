@@ -11,7 +11,7 @@ void IslandFactory::launch()
     engineBase_->launch();
 }
 
-void IslandFactory::update(double deltaTime)
+void IslandFactory::update(const double deltaTime)
 {
     std::cout << "Update func: " << deltaTime << std::endl;
 }
