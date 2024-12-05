@@ -5,7 +5,7 @@
 #include <String>
 
 
-class Island{
+class Island : public DrawAble{
 public:
     Island();
 
