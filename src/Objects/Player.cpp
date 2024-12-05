@@ -4,7 +4,7 @@
 
 #include "Player.h"
 
-#include "../TextureList.h"
+#include "TextureList.h"
 
 Player::Player()
 {

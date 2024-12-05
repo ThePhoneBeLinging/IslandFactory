@@ -9,7 +9,13 @@ add_executable(IslandFactory
         Controllers/GameController.cpp
         Objects/Player.cpp
         Controllers/GameObjectController.cpp
+        Controllers/GameBoard.cpp
+        Objects/Tiles/Tile.cpp
+        Objects/Tiles/GrassTile.cpp
 )
 
 
 target_link_libraries(IslandFactory EngineBase)
+
+target_include_directories(IslandFactory PRIVATE Controllers)
+target_include_directories(IslandFactory PRIVATE Textures)
