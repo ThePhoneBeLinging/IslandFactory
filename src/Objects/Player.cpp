@@ -4,11 +4,14 @@
 
 #include "Player.h"
 
+#include "../TextureList.h"
+
 Player::Player()
 {
     height_ = 50;
     width_ = 50;
     movementSpeed_ = 500;
+    textureLocation_ = TextureList::grass;
 }
 
 double Player::getMovementSpeed() const
