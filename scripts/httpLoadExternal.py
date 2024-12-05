@@ -21,7 +21,7 @@ def clone_or_pull(repo_url, target_dir):
 def main():
 
     # Ensure the 'dependencies' directory exists
-    ensure_dir_exists("dependencies")
+
 
     # List of repository URLs to clone or pull
     repo_urls = [
@@ -29,13 +29,16 @@ def main():
         'https://github.com/ThePhoneBeLinging/Utility.git',
         # Add more repository URLs as needed
     ]
-
+    resourcePath = "Resources"
     # Clone or pull each repository
     for repo_url in repo_urls:
         path = "dependencies"
+
         if (os.getcwd().endswith("scripts")):
             path = "../dependencies"
+            resourcePath = "../Resources"
+        ensure_dir_exists(path)
         clone_or_pull(repo_url, path)
-    ensure_dir_exists("Resources")
+    ensure_dir_exists(resourcePath)
 if __name__ == '__main__':
     main()
