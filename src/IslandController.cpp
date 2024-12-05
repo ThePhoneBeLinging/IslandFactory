@@ -1,3 +1,5 @@
 #include "IslandController.h"
 
-IslandController::IslandController() = default;
+IslandController::IslandController() {
+    is_connected = false;
+}
