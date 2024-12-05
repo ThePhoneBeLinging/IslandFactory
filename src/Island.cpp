@@ -9,8 +9,40 @@ Island::Island() {
     island_draw_able_->setY(y - static_cast<double>(island_draw_able_->getHeight())/2);
 }
 
-void Island::setTextureIndex(const std::shared_ptr<EngineBase>& _enginebase, const std::string& image) const {
+void Island::setTexture(const std::shared_ptr<EngineBase>& _enginebase, const std::string& image) const {
     island_draw_able_->setTextureIndex(_enginebase->getGraphicsLibrary()->loadTexture("../../Resources/" + image + ".png"));
+}
+
+void Island::setX(const double _x) {
+    x = _x;
+}
+
+void Island::setY(const double _y) {
+    y = _y;
+}
+
+double Island::getX() const {
+    return x;
+}
+
+double Island::getY() const {
+    return y;
+}
+
+void Island::setHeight(const int _height) {
+    height = _height;
+}
+
+void Island::setWidth(const int _width) {
+    width = _width;
+}
+
+int Island::getHeight() const {
+    return height;
+}
+
+int Island::getWidth() const {
+    return width;
 }
 
 std::shared_ptr<DrawAble> Island::get_drawable() {
