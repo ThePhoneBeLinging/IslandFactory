@@ -9,6 +9,8 @@ add_executable(IslandFactory
         IslandFactory.h
         Island.cpp
         Island.h
+        IslandController.cpp
+        IslandController.h
 )
 
 
