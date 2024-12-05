@@ -5,8 +5,6 @@
 
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
-    auto keeper = std::make_unique<IslandFactory>();
-    keeper->launch();
+    IslandFactory::launch();
     return 0;
 }
