@@ -3,13 +3,15 @@
 //
 
 #include "IslandFactory.h"
-
-IslandFactory::IslandFactory()
+#include <iostream>
+void IslandFactory::launch()
 {
     engineBase_ = std::make_shared<EngineBase>();
+    engineBase_->registerUpdateFunction(&update);
+    engineBase_->launch();
 }
 
-void IslandFactory::start()
+void IslandFactory::update(double deltaTime)
 {
-    engineBase_->launch();
+    std::cout << "Update func: " << deltaTime << std::endl;
 }

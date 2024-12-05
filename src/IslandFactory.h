@@ -10,10 +10,10 @@
 class IslandFactory
 {
 public:
-    IslandFactory();
-    void start();
+    static void launch();
+    static void update(double deltaTime);
 private:
-    std::shared_ptr<EngineBase> engineBase_;
+    static inline std::shared_ptr<EngineBase> engineBase_;
 };
 
 
