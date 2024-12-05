@@ -12,6 +12,7 @@ public:
 private:
     std::shared_ptr<EngineBase> engineBase_;
     std::shared_ptr<DrawAble> draw_able_;
+    std::shared_ptr<Island> main_island_;
 };
 
 #endif //IslandFactory_H
