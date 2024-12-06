@@ -8,8 +8,7 @@
 
 Player::Player()
 {
-    this->setHeight(50);
-    this->setWidth(50);
+    this->setSize(50, 50);
     movementSpeed_ = 50000;
 }
 
