@@ -6,6 +6,6 @@
 
 Tile::Tile()
 {
-    width_ = TILESIZE;
-    height_ = TILESIZE;
+    setWidth(TILESIZE);
+    setHeight(TILESIZE);
 }

@@ -15,6 +15,7 @@ class GameBoard
 {
 public:
     explicit GameBoard(std::shared_ptr<EngineBase>& engineBase);
+    void moveObjects(double deltaMoveX, double deltaMoveY);
 
 private:
     std::vector<std::vector<std::shared_ptr<Tile>>> tileMatrix_;

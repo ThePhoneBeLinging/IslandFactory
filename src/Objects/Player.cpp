@@ -8,9 +8,14 @@
 
 Player::Player()
 {
-    height_ = 50;
-    width_ = 50;
-    movementSpeed_ = 500;
+    setHeight(50);
+    setWidth(50);
+    movementSpeed_ = 50000;
+}
+
+void Player::moveToCenter(const std::pair<int, int>& windowSize)
+{
+    updatePosition((windowSize.first - width_) / 2, (windowSize.second - height_) / 2);
 }
 
 double Player::getMovementSpeed() const

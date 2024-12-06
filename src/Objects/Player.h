@@ -11,11 +11,12 @@ class Player : public DrawAble
 {
 public:
     Player();
+    void moveToCenter(const std::pair<int, int>& windowSize);
     [[nodiscard]] double getMovementSpeed() const;
+
 private:
     double movementSpeed_;
 };
-
 
 
 #endif //PLAYER_H
