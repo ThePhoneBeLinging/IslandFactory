@@ -1,5 +1,7 @@
 #include "Island.h"
 
+
+//TODO: Island should inherit Drawable
 Island::Island() {
     island_draw_able_ = std::make_shared<DrawAble>();
 
@@ -32,19 +34,19 @@ double Island::getY() const {
     return island_draw_able_->getY();
 }
 
-void Island::setHeight(const int _height) {
+void Island::setHeight(const double _height) {
     island_draw_able_->setHeight(_height);
 }
 
-void Island::setWidth(const int _width) {
+void Island::setWidth(const double _width) {
     island_draw_able_->setWidth(_width);
 }
 
-int Island::getHeight() const {
+double Island::getHeight() const {
     return island_draw_able_->getHeight();
 }
 
-int Island::getWidth() const {
+double Island::getWidth() const {
     return island_draw_able_->getWidth();
 }
 
@@ -65,7 +67,7 @@ void Island::setSize(double _height, double _width, bool _useAspect) {
         double aspectRatio = _width / _height;
 
         if (aspectRatio > 0) {
-            setWidth(_height * static_cast<int>(aspectRatio));
+            setWidth(_height * aspectRatio);
             setHeight(_height);
         } else {
             return;

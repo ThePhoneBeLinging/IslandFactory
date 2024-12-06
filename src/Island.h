@@ -16,10 +16,10 @@ public:
     [[nodiscard]] double getX() const;
     [[nodiscard]] double getY() const;
 
-    void setHeight(int _height);
-    void setWidth(int _width);
-    [[nodiscard]] int getHeight() const;
-    [[nodiscard]] int getWidth() const;
+    void setHeight(double _height);
+    void setWidth(double _width);
+    [[nodiscard]] double getHeight() const;
+    [[nodiscard]] double getWidth() const;
 
     void setSize(double _height, double _width, bool _useAspect);
 
