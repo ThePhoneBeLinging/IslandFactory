@@ -8,10 +8,13 @@ IslandFactory::IslandFactory()
 }
 
 void IslandFactory::start() const {
-
-    main_island_->setHeight(main_island_->getHeight() + 500);
-    main_island_->setTexture("Island");
-    engineBase_->registerDrawAble(main_island_->get_drawable());
+    engineBase_->registerDrawAble(createMainIsland());
     engineBase_->launch();
+}
+
+std::shared_ptr<DrawAble> IslandFactory::createMainIsland() const {
+    main_island_->setSize(main_island_->getHeight() + 200, main_island_->getWidth(), true);
+    main_island_->setTexture("Island");
+    return main_island_->get_drawable();
 }
 

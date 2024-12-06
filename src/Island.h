@@ -5,7 +5,7 @@
 #include <String>
 
 
-class Island : public DrawAble{
+class Island {
 public:
     Island();
 
@@ -21,6 +21,8 @@ public:
     [[nodiscard]] int getHeight() const;
     [[nodiscard]] int getWidth() const;
 
+    void setSize(double _height, double _width, bool _useAspect);
+
     std::shared_ptr<DrawAble> get_drawable();
 
     void setClickState(bool _newClickstate);
@@ -34,6 +36,7 @@ private:
     double x = 200;
     double y = 200;
     bool is_clicked;
+
 };
 
 

@@ -34,12 +34,10 @@ double Island::getY() const {
 
 void Island::setHeight(const int _height) {
     island_draw_able_->setHeight(_height);
-    island_draw_able_->setWidth(static_cast<int>(aspect) * island_draw_able_->getHeight());
 }
 
 void Island::setWidth(const int _width) {
     island_draw_able_->setWidth(_width);
-    island_draw_able_->setHeight(static_cast<int>(island_draw_able_->getWidth() / aspect));
 }
 
 int Island::getHeight() const {
@@ -60,4 +58,20 @@ void Island::setClickState(const bool _newClickstate) {
 
 bool Island::getClickState() const {
     return is_clicked;
+}
+
+void Island::setSize(double _height, double _width, bool _useAspect) {
+    if (_useAspect){
+        double aspectRatio = _width / _height;
+
+        if (aspectRatio > 0) {
+            setWidth(_height * static_cast<int>(aspectRatio));
+            setHeight(_height);
+        } else {
+            return;
+        }
+    } else {
+        setWidth(_width);
+        setHeight(_height);
+    }
 }
