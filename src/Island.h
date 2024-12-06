@@ -9,7 +9,7 @@ class Island : public DrawAble{
 public:
     Island();
 
-    void setTexture(const std::shared_ptr<EngineBase> &_enginebase, const std::string& image) const;
+    void setTexture(const std::string& image) const;
 
     void setX(double _x);
     void setY(double _y);

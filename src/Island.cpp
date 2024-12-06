@@ -12,8 +12,8 @@ Island::Island() {
     is_clicked = false;
 }
 
-void Island::setTexture(const std::shared_ptr<EngineBase>& _enginebase, const std::string& image) const {
-    island_draw_able_->setTextureIndex(_enginebase->getGraphicsLibrary()->loadTexture("../../Resources/" + image + ".png"));
+void Island::setTexture(const std::string& image) const {
+    island_draw_able_->setTextureLocation("../../Resources/" + image + ".png");
 }
 
 void Island::setX(const double _x) {
