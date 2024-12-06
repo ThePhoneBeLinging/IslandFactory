@@ -8,7 +8,7 @@
 #include <utility>
 
 GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBase)
-    : player_(std::make_shared<Player>()), engineBase_(engineBase), gameBoard_(std::make_shared<GameBoard>(engineBase))
+    : gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase), player_(std::make_shared<Player>())
 {
     engineBase_->registerDrawAble(player_);
     auto size = engineBase_->getGraphicsLibrary()->getWindowSize();
