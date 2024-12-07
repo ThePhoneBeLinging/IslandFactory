@@ -7,7 +7,7 @@ IslandController::IslandController() {
 void IslandController::connectIslands(const std::shared_ptr<EngineBase>& _enginebase, const std::shared_ptr<Island> &_island1, const std::shared_ptr<Island> &_island2) {
     if (_island1->getClickState() && _island2->getClickState()) {
         is_connected = true;
-        drawIslandBridge(_enginebase, _island1, _island1);
+        //drawIslandBridge(_enginebase, _island1, _island1);
     }
 }
 
@@ -19,7 +19,10 @@ void IslandController::setConnected(const bool _newConnection) {
     is_connected = _newConnection;
 }
 
-void IslandController::drawIslandBridge(const std::shared_ptr<EngineBase>& _enginebase, const std::shared_ptr<Island> &_island1, const std::shared_ptr<Island> &_island2) const {
+std::shared_ptr<DrawAble> IslandController::drawIslandBridge(const std::shared_ptr<EngineBase> &_enginebase,
+                                                             const std::shared_ptr<Island> &_island1,
+                                                             const std::shared_ptr<Island> &_island2) const {
+    _enginebase->getGraphicsLibrary()->loadTexture("../../Resources/Brigde.png");
 
 }
 

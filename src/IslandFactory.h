@@ -13,7 +13,9 @@ private:
     std::shared_ptr<EngineBase> engineBase_;
     std::shared_ptr<DrawAble> draw_able_;
     std::shared_ptr<Island> main_island_;
+    std::shared_ptr<Island> second_island_;
     std::shared_ptr<DrawAble> createMainIsland() const;
+    std::shared_ptr<DrawAble> createSecondIsland() const;
 };
 
 #endif //IslandFactory_H

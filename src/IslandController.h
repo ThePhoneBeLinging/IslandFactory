@@ -16,8 +16,10 @@ public:
 
 private:
     bool is_connected;
-    void drawIslandBridge(const std::shared_ptr<EngineBase> &_enginebase, const std::shared_ptr<Island> &_island1, const std::shared_ptr<Island>
-                          &_island2) const;
+
+    std::shared_ptr<DrawAble> drawIslandBridge(const std::shared_ptr<EngineBase> &_enginebase,
+                                               const std::shared_ptr<Island> &_island1, const std::shared_ptr<Island>
+                                               &_island2) const;
 };
 
 
