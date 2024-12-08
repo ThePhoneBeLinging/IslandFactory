@@ -9,7 +9,7 @@
 Player::Player()
 {
     this->setSize(50, 50);
-    movementSpeed_ = 50000;
+    movementSpeed_ = 500;
 }
 
 void Player::moveToCenter(const std::pair<int, int>& windowSize)
