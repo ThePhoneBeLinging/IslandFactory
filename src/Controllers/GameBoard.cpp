@@ -12,11 +12,11 @@
 GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engineBase)
 {
     int y = 0;
-    for (int i = 0; i < 15; i++)
+    for (int i = 0; i < 150; i++)
     {
         int x = 0;
         tileMatrix_.emplace_back();
-        for (int j = 0; j < 15; j++)
+        for (int j = 0; j < 150; j++)
         {
             tileMatrix_[i].emplace_back(std::make_shared<GrassTile>());
             tileMatrix_[i][j]->setX(x);
