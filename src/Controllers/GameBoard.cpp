@@ -9,7 +9,7 @@
 #include "../Objects/Tiles/GrassTile.h"
 #include "EngineBase/EngineBase.h"
 
-GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engineBase)
+GameBoard::GameBoard(std::shared_ptr<EngineBase> &engineBase) : engineBase_(engineBase)
 {
     int y = 0;
     for (int i = 0; i < 150; i++)
@@ -25,20 +25,5 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
             x += Tile::TILESIZE;
         }
         y += Tile::TILESIZE;
-    }
-}
-
-void GameBoard::moveObjects(const double deltaMoveX, const double deltaMoveY)
-{
-    if (deltaMoveX == 0 && deltaMoveY == 0)
-    {
-        return;
-    }
-    for (auto& tileVector : tileMatrix_)
-    {
-        for (const auto& tile : tileVector)
-        {
-            tile->updatePosition(deltaMoveX, deltaMoveY);
-        }
     }
 }

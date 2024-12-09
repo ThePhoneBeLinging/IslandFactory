@@ -4,6 +4,7 @@
 
 #ifndef GAMEBOARD_H
 #define GAMEBOARD_H
+
 #include <memory>
 #include <vector>
 
@@ -14,8 +15,7 @@
 class GameBoard
 {
 public:
-    explicit GameBoard(std::shared_ptr<EngineBase>& engineBase);
-    void moveObjects(double deltaMoveX, double deltaMoveY);
+    explicit GameBoard(std::shared_ptr<EngineBase> &engineBase);
 
 private:
     std::vector<std::vector<std::shared_ptr<Tile>>> tileMatrix_;
