@@ -4,12 +4,16 @@
 
 #ifndef TILE_H
 #define TILE_H
+
 #include <EngineBase/DrawAble.h>
 
 class Tile : public DrawAble
 {
 public:
     Tile();
+
+    void onClick();
+
     static inline const int TILESIZE = 50;
 };
 

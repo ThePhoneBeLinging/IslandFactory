@@ -9,3 +9,8 @@ Tile::Tile()
     setWidth(TILESIZE);
     setHeight(TILESIZE);
 }
+
+void Tile::onClick()
+{
+    // DO NOTHING
+}
