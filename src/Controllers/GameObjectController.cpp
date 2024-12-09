@@ -7,8 +7,9 @@
 #include <thread>
 #include <utility>
 
-GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBase)
-    : gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase), player_(std::make_shared<Player>())
+GameObjectController::GameObjectController(std::shared_ptr<EngineBase> &engineBase)
+        : gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase),
+          player_(std::make_shared<Player>())
 {
     engineBase_->registerDrawAble(player_);
     auto size = engineBase_->getGraphicsLibrary()->getWindowSize();
@@ -38,5 +39,5 @@ void GameObjectController::handleMovement(const double deltaTime)
     {
         deltaX -= deltaMovement;
     }
-    gameBoard_->moveObjects(deltaX, deltaY);
+    engineBase_->getSceneController()->getCurrentDrawAbleController()->updateOffset(deltaX, deltaY);
 }
