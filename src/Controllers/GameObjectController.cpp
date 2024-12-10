@@ -57,8 +57,10 @@ void GameObjectController::handleMovement(const double deltaTime)
     {
         currentOffset.second = maxOffset + windowSize.second;
     }
+
     engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(currentOffset.first,
                                                                                  currentOffset.second);
+
     auto size = engineBase_->getGraphicsLibrary()->getWindowSize();
     player_->moveToCenter(size);
 }
