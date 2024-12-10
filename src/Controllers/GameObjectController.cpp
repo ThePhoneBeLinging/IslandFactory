@@ -7,8 +7,8 @@
 #include <thread>
 #include <utility>
 
-GameObjectController::GameObjectController(std::shared_ptr<EngineBase> &engineBase)
-        : gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase),
+GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBase)
+        : lmbPressed_(false), gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase),
           player_(std::make_shared<Player>())
 {
     engineBase_->registerDrawAble(player_);
@@ -40,4 +40,21 @@ void GameObjectController::handleMovement(const double deltaTime)
         deltaX -= deltaMovement;
     }
     engineBase_->getSceneController()->getCurrentDrawAbleController()->updateOffset(deltaX, deltaY);
+}
+
+void GameObjectController::handleClicks()
+{
+    //TODO Handle clicks for HUD, not only for tiles
+    if (not lmbPressed_ && engineBase_->getGraphicsLibrary()->isMouseButtonDown(ENGINEBASE_BUTTON_LEFT))
+    {
+        lmbPressed_ = true;
+        auto mousePos = engineBase_->getGraphicsLibrary()->getMousePos();
+        //TODO Handle clicks
+        gameBoard_->handleClicks(mousePos);
+    }
+
+    if (lmbPressed_ && not engineBase_->getGraphicsLibrary()->isMouseButtonDown(ENGINEBASE_BUTTON_LEFT))
+    {
+        lmbPressed_ = false;
+    }
 }

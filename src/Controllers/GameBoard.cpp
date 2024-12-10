@@ -4,12 +4,11 @@
 
 #include "GameBoard.h"
 
-#include <iostream>
 
 #include "../Objects/Tiles/GrassTile.h"
 #include "EngineBase/EngineBase.h"
 
-GameBoard::GameBoard(std::shared_ptr<EngineBase> &engineBase) : engineBase_(engineBase)
+GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engineBase)
 {
     int y = 0;
     for (int i = 0; i < 150; i++)
@@ -26,4 +25,12 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase> &engineBase) : engineBase_(engi
         }
         y += Tile::TILESIZE;
     }
+}
+
+void GameBoard::handleClicks(std::pair<int, int>& mousePosition)
+{
+    int transformedX = mousePosition.first / Tile::TILESIZE;
+    int transformedY = mousePosition.second / Tile::TILESIZE;
+
+    tileMatrix_[transformedX][transformedY]->onClick();
 }

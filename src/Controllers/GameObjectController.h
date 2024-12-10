@@ -4,6 +4,7 @@
 
 #ifndef GAMEOBJECTCONTROLLER_H
 #define GAMEOBJECTCONTROLLER_H
+
 #include <GameBoard.h>
 #include <memory>
 #include <vector>
@@ -16,9 +17,13 @@ class GameObjectController
 {
 public:
     explicit GameObjectController(std::shared_ptr<EngineBase>& engineBase);
+
     void handleMovement(double deltaTime);
 
+    void handleClicks();
+
 private:
+    bool lmbPressed_;
     std::shared_ptr<GameBoard> gameBoard_;
     std::shared_ptr<EngineBase> engineBase_;
     std::shared_ptr<Player> player_;

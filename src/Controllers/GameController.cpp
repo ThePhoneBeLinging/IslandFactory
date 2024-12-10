@@ -6,8 +6,7 @@
 #include <utility>
 
 GameController::GameController(std::shared_ptr<EngineBase>& engineBase)
-    : engineBase_(engineBase)
-    , gameObjectController_(std::make_unique<GameObjectController>(engineBase))
+        : engineBase_(engineBase), gameObjectController_(std::make_unique<GameObjectController>(engineBase))
 {
 }
 
@@ -19,4 +18,5 @@ void GameController::update(const double deltaTime)
 void GameController::handleInput(const double deltaTime)
 {
     gameObjectController_->handleMovement(deltaTime);
+    gameObjectController_->handleClicks();
 }

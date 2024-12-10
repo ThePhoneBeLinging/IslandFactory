@@ -15,7 +15,9 @@
 class GameBoard
 {
 public:
-    explicit GameBoard(std::shared_ptr<EngineBase> &engineBase);
+    explicit GameBoard(std::shared_ptr<EngineBase>& engineBase);
+
+    void handleClicks(std::pair<int, int>& mousePosition);
 
 private:
     std::vector<std::vector<std::shared_ptr<Tile>>> tileMatrix_;
