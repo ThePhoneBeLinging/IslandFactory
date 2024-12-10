@@ -12,7 +12,6 @@ GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBa
           player_(std::make_shared<Player>())
 {
     engineBase_->registerDrawAble(player_);
-    engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(-50, -50);
 }
 
 void GameObjectController::handleMovement(const double deltaTime)
