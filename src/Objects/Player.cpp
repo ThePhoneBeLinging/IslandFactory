@@ -13,9 +13,9 @@ Player::Player()
     this->setPositionIsAffectedByOffset(false);
 }
 
-void Player::moveToCenter(const std::pair<int, int> &windowSize)
+void Player::moveToCenter(const std::pair<int, int>& windowSize)
 {
-    updatePosition((windowSize.first - this->getWidth()) / 2, (windowSize.second - this->getHeight()) / 2);
+    setPosition((windowSize.first - this->getWidth()) / 2, (windowSize.second - this->getHeight()) / 2);
 }
 
 double Player::getMovementSpeed() const
