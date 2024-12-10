@@ -2,6 +2,7 @@
 // Created by eal on 12/5/24.
 //
 
+#include <iostream>
 #include "GameBoard.h"
 
 
@@ -29,8 +30,10 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
 
 void GameBoard::handleClicks(std::pair<int, int>& mousePosition)
 {
-    int transformedX = mousePosition.first / Tile::TILESIZE;
-    int transformedY = mousePosition.second / Tile::TILESIZE;
+    auto offset = engineBase_->getSceneController()->getOffset();
+    int transformedX = (mousePosition.first + static_cast<int>(offset.first * -1)) / Tile::TILESIZE;
+    int transformedY = (mousePosition.second + static_cast<int>(offset.second * -1)) / Tile::TILESIZE;
 
+    std::cout << "Tile pressed: " << transformedX << ", " << transformedY << std::endl;
     tileMatrix_[transformedX][transformedY]->onClick();
 }
