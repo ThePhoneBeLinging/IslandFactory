@@ -40,6 +40,27 @@ void GameObjectController::handleMovement(const double deltaTime)
         deltaX -= deltaMovement;
     }
     engineBase_->getSceneController()->getCurrentDrawAbleController()->updateOffset(deltaX, deltaY);
+    auto currentOffset = engineBase_->getSceneController()->getCurrentDrawAbleController()->getCurrentUpdateOffset();
+    if (currentOffset.first > 0)
+    {
+        currentOffset.first = 0;
+    }
+    if (currentOffset.second > 0)
+    {
+        currentOffset.second = 0;
+    }
+    int maxOffset = gameBoard_->getGridSideLength() * Tile::TILESIZE * -1;
+    auto windowSize = engineBase_->getGraphicsLibrary()->getWindowSize();
+    if (currentOffset.first < maxOffset + windowSize.first)
+    {
+        currentOffset.first = maxOffset + windowSize.first;
+    }
+    if (currentOffset.second < maxOffset + windowSize.second)
+    {
+        currentOffset.second = maxOffset + windowSize.second;
+    }
+    engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(currentOffset.first,
+                                                                                 currentOffset.second);
 }
 
 void GameObjectController::handleClicks()

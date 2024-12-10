@@ -37,3 +37,8 @@ void GameBoard::handleClicks(std::pair<int, int>& mousePosition)
     std::cout << "Tile pressed: " << transformedX << ", " << transformedY << std::endl;
     tileMatrix_[transformedX][transformedY]->onClick();
 }
+
+int GameBoard::getGridSideLength()
+{
+    return static_cast<int>(tileMatrix_.size());
+}
