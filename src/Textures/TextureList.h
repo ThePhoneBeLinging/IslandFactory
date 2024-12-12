@@ -10,7 +10,7 @@
 class TextureList {
 public:
     const static inline std::string grass = "../Resources/grass.png";
-    const static inline std::string waterTile = "../Resources/waterTile.png";
+    const static inline std::string water = "../Resources/waterTile.png";
 };
 
 #endif //TEXTURELIST_H
