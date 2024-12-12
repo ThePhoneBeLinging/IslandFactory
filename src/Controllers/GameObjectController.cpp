@@ -57,6 +57,8 @@ void GameObjectController::handleMovement(const double deltaTime)
         currentOffset.second = maxOffset + windowSize.second;
     }
 
+    //TODO Check collision;
+
     engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(currentOffset.first,
                                                                                  currentOffset.second);
 

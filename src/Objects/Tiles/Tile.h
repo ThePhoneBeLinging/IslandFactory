@@ -14,6 +14,8 @@ public:
 
     void onClick();
 
+    bool isWalkAble();
+
     static inline const int TILESIZE = 50;
 };
 

@@ -14,3 +14,8 @@ void Tile::onClick()
 {
     // DO NOTHING
 }
+
+bool Tile::isWalkAble()
+{
+    return true;
+}
