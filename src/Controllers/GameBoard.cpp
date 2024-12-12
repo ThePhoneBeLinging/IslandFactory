@@ -13,11 +13,20 @@
 GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engineBase)
 {
     int y = 0;
-    for (int i = 0; i < 150; i++) {
+    for (int i = 0; i < 150; i++)
+    {
         int x = 0;
         tileMatrix_.emplace_back();
-        for (int j = 0; j < 150; j++) {
-            tileMatrix_[i].emplace_back(std::make_shared<WaterTile>());
+        for (int j = 0; j < 150; j++)
+        {
+            if (i < 15 && j < 15)
+            {
+                tileMatrix_[i].emplace_back(std::make_shared<GrassTile>());
+            }
+            else
+            {
+                tileMatrix_[i].emplace_back(std::make_shared<WaterTile>());
+            }
             tileMatrix_[i][j]->setX(x);
             tileMatrix_[i][j]->setY(y);
             engineBase_->registerDrawAble(tileMatrix_[i][j]);
