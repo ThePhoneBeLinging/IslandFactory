@@ -16,7 +16,6 @@ GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBa
 
 void GameObjectController::handleMovement(const double deltaTime)
 {
-    //TODO Move all other objects
     const double deltaMovement = player_->getMovementSpeed() * deltaTime;
     double deltaX = 0;
     double deltaY = 0;
