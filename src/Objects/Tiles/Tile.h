@@ -12,9 +12,9 @@ class Tile : public DrawAble
 public:
     Tile();
 
-    void onClick();
+    virtual void onClick();
 
-    bool isWalkAble();
+    virtual bool isWalkAble();
 
     static inline const int TILESIZE = 50;
 };
