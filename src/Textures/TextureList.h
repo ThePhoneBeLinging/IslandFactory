@@ -4,12 +4,13 @@
 
 #ifndef TEXTURELIST_H
 #define TEXTURELIST_H
+
 #include <string>
 
-class TextureList
-{
+class TextureList {
 public:
     const static inline std::string grass = "../Resources/grass.png";
+    const static inline std::string waterTile = "../Resources/waterTile.png";
 };
 
 #endif //TEXTURELIST_H
