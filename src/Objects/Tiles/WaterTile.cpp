@@ -7,5 +7,5 @@
 
 WaterTile::WaterTile()
 {
-    setTextureLocation(TextureList::water);
+    setTextureLocation(&TextureList::water);
 }

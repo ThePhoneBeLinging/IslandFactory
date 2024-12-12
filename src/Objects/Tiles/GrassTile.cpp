@@ -7,5 +7,5 @@
 
 GrassTile::GrassTile()
 {
-    setTextureLocation(TextureList::grass);
+    setTextureLocation(&TextureList::grass);
 }
