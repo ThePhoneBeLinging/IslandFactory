@@ -12,6 +12,8 @@ add_executable(IslandFactory
         Controllers/GameBoard.cpp
         Objects/Tiles/Tile.cpp
         Objects/Tiles/GrassTile.cpp
+        Objects/Tiles/WaterTile.cpp
+        Objects/Tiles/WaterTile.h
 )
 
 

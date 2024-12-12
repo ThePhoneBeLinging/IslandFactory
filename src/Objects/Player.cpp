@@ -11,6 +11,7 @@ Player::Player()
     this->setSize(50, 50);
     movementSpeed_ = 500;
     this->setPositionIsAffectedByOffset(false);
+    this->setTextureLocation(&TextureList::zelda);
 }
 
 void Player::moveToCenter(const std::pair<int, int>& windowSize)
