@@ -7,10 +7,12 @@
 
 #include <string>
 
-class TextureList {
+class TextureList
+{
 public:
     const static inline std::string grass = "../Resources/grass.png";
     const static inline std::string water = "../Resources/waterTile.png";
+    const static inline std::string zelda = "../Resources/zelda.png";
 };
 
 #endif //TEXTURELIST_H
