@@ -60,19 +60,86 @@ void GameObjectController::handleMovement(const double deltaTime)
         currentOffset.second = maxOffset + windowSize.second;
     }
 
-    for (const auto& tile: player_->getCollisionTiles(currentOffset))
-    {
-        if (not gameBoard_->getTile(tile.first, tile.second)->isWalkAble())
-        {
-            // TODO Try to undo moves
-            std::cout << "COLLISION" << std::endl;
-        }
-    }
-
+    this->handleCollisionWithTerrain(currentOffset);
 
     engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(currentOffset.first,
                                                                                  currentOffset.second);
 
+}
+
+void GameObjectController::handleCollisionWithTerrain(std::pair<double, double>& currentOffset)
+{
+    // Check collision
+    // If collision, reduce offsetX, try again until x = 0
+    // If still collision, reset x, reduce offsetY, try again until y=0
+    // If still collision, both should be 0.
+
+    bool collisionDetected = true;
+
+    bool xValuesChecked = false;
+    bool yValuesChecked = false;
+    std::pair<double, double> localOffset = {currentOffset.first, currentOffset.second};
+    std::pair<double, double> doubleCollisionOffset = {0, 0};
+    while (collisionDetected)
+    {
+        collisionDetected = false;
+        for (const auto& tileCords: player_->getCollisionTiles(localOffset))
+        {
+            if (not gameBoard_->getTile(tileCords.first, tileCords.second)->isWalkAble())
+            {
+                collisionDetected = true;
+
+                if (not xValuesChecked && localOffset.first != 0)
+                {
+                    if (localOffset.first > 1)
+                    {
+                        localOffset.first -= 1;
+                    }
+                    else if (localOffset.first < -1)
+                    {
+                        localOffset.first -= -1;
+                    }
+                    else
+                    {
+                        localOffset.first = 0;
+                        xValuesChecked = true;
+                    }
+                    break;
+                }
+
+                if (not yValuesChecked && localOffset.second != 0)
+                {
+                    if (localOffset.second > 1)
+                    {
+                        localOffset.second -= 1;
+                    }
+                    else if (localOffset.second < -1)
+                    {
+                        localOffset.second -= -1;
+                    }
+                    else
+                    {
+                        localOffset.second = 0;
+                        yValuesChecked = true;
+                    }
+                    break;
+                }
+            }
+        }
+        if (not(xValuesChecked && yValuesChecked))
+        {
+            if (xValuesChecked)
+            {
+                localOffset.first = currentOffset.first;
+            }
+            if (yValuesChecked)
+            {
+                localOffset.second = currentOffset.second;
+            }
+        }
+
+    }
+    currentOffset = localOffset;
 }
 
 void GameObjectController::handleClicks()
