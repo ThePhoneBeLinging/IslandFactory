@@ -6,6 +6,7 @@
 
 #include <thread>
 #include <utility>
+#include <iostream>
 
 GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBase)
         : lmbPressed_(false), gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase),
@@ -16,6 +17,8 @@ GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBa
 
 void GameObjectController::handleMovement(const double deltaTime)
 {
+    auto size = engineBase_->getGraphicsLibrary()->getWindowSize();
+    player_->moveToCenter(size);
     const double deltaMovement = player_->getMovementSpeed() * deltaTime;
     double deltaX = 0;
     double deltaY = 0;
@@ -57,13 +60,19 @@ void GameObjectController::handleMovement(const double deltaTime)
         currentOffset.second = maxOffset + windowSize.second;
     }
 
-    //TODO Check collision;
+    for (const auto& tile: player_->getCollisionTiles(currentOffset))
+    {
+        if (not gameBoard_->getTile(tile.first, tile.second)->isWalkAble())
+        {
+            // TODO Try to undo moves
+            std::cout << "COLLISION" << std::endl;
+        }
+    }
+
 
     engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(currentOffset.first,
                                                                                  currentOffset.second);
 
-    auto size = engineBase_->getGraphicsLibrary()->getWindowSize();
-    player_->moveToCenter(size);
 }
 
 void GameObjectController::handleClicks()

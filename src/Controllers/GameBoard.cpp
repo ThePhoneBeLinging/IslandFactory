@@ -50,3 +50,8 @@ int GameBoard::getGridSideLength()
 {
     return static_cast<int>(tileMatrix_.size());
 }
+
+std::shared_ptr<Tile>& GameBoard::getTile(int firstIndex, int secondIndex)
+{
+    return tileMatrix_[firstIndex][secondIndex];
+}
