@@ -5,6 +5,7 @@
 #include "Player.h"
 
 #include "TextureList.h"
+#include "Tiles/Tile.h"
 
 Player::Player()
 {
@@ -22,4 +23,23 @@ void Player::moveToCenter(const std::pair<int, int>& windowSize)
 double Player::getMovementSpeed() const
 {
     return movementSpeed_;
+}
+
+std::vector<std::pair<int, int>> Player::getCollisionTiles(std::pair<double, double>& currentOffset)
+{
+    std::vector<std::pair<int, int>> tilesToCheck;
+    tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2), this->getY());
+    tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2),
+                              this->getY() - this->getHeight());
+    tilesToCheck.emplace_back(this->getX(), this->getY() - (this->getHeight()) / 2);
+    tilesToCheck.emplace_back(this->getX() + this->getWidth(),
+                              this->getY() - (this->getHeight()) / 2);
+    for (auto& val: tilesToCheck)
+    {
+        val.first -= currentOffset.first;
+        val.second -= currentOffset.second;
+        val.first /= Tile::TILESIZE;
+        val.second /= Tile::TILESIZE;
+    }
+    return tilesToCheck;
 }
