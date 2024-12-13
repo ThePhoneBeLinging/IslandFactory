@@ -60,14 +60,15 @@ void GameObjectController::handleMovement(const double deltaTime)
         currentOffset.second = maxOffset + windowSize.second;
     }
 
-    this->handleCollisionWithTerrain(currentOffset);
+    this->handleCollisionWithTerrain(currentOffset, deltaX, deltaY);
 
     engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(currentOffset.first,
                                                                                  currentOffset.second);
 
 }
 
-void GameObjectController::handleCollisionWithTerrain(std::pair<double, double>& currentOffset)
+void
+GameObjectController::handleCollisionWithTerrain(std::pair<double, double>& currentOffset, double deltaX, double deltaY)
 {
     // Check collision
     // If collision, reduce offsetX, try again until x = 0
@@ -79,7 +80,6 @@ void GameObjectController::handleCollisionWithTerrain(std::pair<double, double>&
     bool xValuesChecked = false;
     bool yValuesChecked = false;
     std::pair<double, double> localOffset = {currentOffset.first, currentOffset.second};
-    std::pair<double, double> doubleCollisionOffset = {0, 0};
     while (collisionDetected)
     {
         collisionDetected = false;
@@ -94,10 +94,18 @@ void GameObjectController::handleCollisionWithTerrain(std::pair<double, double>&
                     if (localOffset.first > 1)
                     {
                         localOffset.first -= 1;
+                        if (localOffset.first < deltaX)
+                        {
+                            xValuesChecked = true;
+                        }
                     }
                     else if (localOffset.first < -1)
                     {
                         localOffset.first -= -1;
+                        if (localOffset.first > deltaX)
+                        {
+                            xValuesChecked = true;
+                        }
                     }
                     else
                     {
@@ -112,10 +120,18 @@ void GameObjectController::handleCollisionWithTerrain(std::pair<double, double>&
                     if (localOffset.second > 1)
                     {
                         localOffset.second -= 1;
+                        if (localOffset.second < deltaY)
+                        {
+                            yValuesChecked = true;
+                        }
                     }
                     else if (localOffset.second < -1)
                     {
                         localOffset.second -= -1;
+                        if (localOffset.second < deltaY)
+                        {
+                            yValuesChecked = true;
+                        }
                     }
                     else
                     {

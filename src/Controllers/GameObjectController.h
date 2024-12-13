@@ -20,7 +20,7 @@ public:
 
     void handleMovement(double deltaTime);
 
-    void handleCollisionWithTerrain(std::pair<double, double>& currentOffset);
+    void handleCollisionWithTerrain(std::pair<double, double>& currentOffset, double deltaX, double deltaY);
 
     void handleClicks();
 
