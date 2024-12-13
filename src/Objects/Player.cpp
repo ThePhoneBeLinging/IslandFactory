@@ -30,10 +30,10 @@ std::vector<std::pair<int, int>> Player::getCollisionTiles(std::pair<double, dou
     std::vector<std::pair<int, int>> tilesToCheck;
     tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2), this->getY());
     tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2),
-                              this->getY() - this->getHeight());
-    tilesToCheck.emplace_back(this->getX(), this->getY() - (this->getHeight()) / 2);
+                              this->getY() + this->getHeight());
+    tilesToCheck.emplace_back(this->getX(), this->getY() + (this->getHeight()) / 2);
     tilesToCheck.emplace_back(this->getX() + this->getWidth(),
-                              this->getY() - (this->getHeight()) / 2);
+                              this->getY() + (this->getHeight()) / 2);
     for (auto& val: tilesToCheck)
     {
         val.first -= currentOffset.first;
