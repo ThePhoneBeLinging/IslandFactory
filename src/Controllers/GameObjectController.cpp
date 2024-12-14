@@ -85,7 +85,7 @@ GameObjectController::handleCollisionWithTerrain(std::pair<double, double>& curr
     }
     if (not gameBoard_->getTile(tileCords[0].first, tileCords[0].second)->isWalkAble())
     {
-        currentOffset.second += player_->getY() - trueLocationsCollisionTiles[0].second + 1;
+        currentOffset.second += player_->getY() - trueLocationsCollisionTiles[0].second - 1;
     }
     if (not gameBoard_->getTile(tileCords[1].first, tileCords[1].second)->isWalkAble())
     {
@@ -93,7 +93,7 @@ GameObjectController::handleCollisionWithTerrain(std::pair<double, double>& curr
     }
     if (not gameBoard_->getTile(tileCords[2].first, tileCords[2].second)->isWalkAble())
     {
-        currentOffset.first += player_->getX() - trueLocationsCollisionTiles[2].first + 1;
+        currentOffset.first += player_->getX() - trueLocationsCollisionTiles[2].first - 1;
     }
     if (not gameBoard_->getTile(tileCords[3].first, tileCords[3].second)->isWalkAble())
     {
