@@ -9,8 +9,8 @@
 #include <iostream>
 
 GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBase)
-        : lmbPressed_(false), gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase),
-          player_(std::make_shared<Player>())
+    : lmbPressed_(false), gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase),
+      player_(std::make_shared<Player>())
 {
     engineBase_->registerDrawAble(player_);
 }
@@ -63,18 +63,21 @@ void GameObjectController::handleMovement(const double deltaTime)
     this->handleCollisionWithTerrain(currentOffset, deltaX, deltaY);
 
     engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(currentOffset.first,
-                                                                                 currentOffset.second);
-
+        currentOffset.second);
 }
 
 void
 GameObjectController::handleCollisionWithTerrain(std::pair<double, double>& currentOffset, double deltaX, double deltaY)
 {
-    const auto trueLocationsCollisionTiles =player_->getCollisionTiles(currentOffset);
-    std::vector<std::pair<int, int>> tileCords;
-    for (auto& val: trueLocationsCollisionTiles)
+    if (deltaX == 0 && deltaY == 0)
     {
-        std::pair<int,int> tileVals;
+        return;
+    }
+    const auto trueLocationsCollisionTiles = player_->getCollisionTiles(currentOffset);
+    std::vector<std::pair<int, int>> tileCords;
+    for (auto& val : trueLocationsCollisionTiles)
+    {
+        std::pair<int, int> tileVals;
         tileVals.first = val.first;
         tileVals.second = val.second;
         tileVals.first -= currentOffset.first;
