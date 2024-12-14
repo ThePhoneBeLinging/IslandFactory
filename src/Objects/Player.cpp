@@ -4,7 +4,11 @@
 
 #include "Player.h"
 
+#include <math.h>
+#include <valarray>
+
 #include "TextureList.h"
+#include "Tiles/Tile.h"
 
 Player::Player()
 {
@@ -22,4 +26,28 @@ void Player::moveToCenter(const std::pair<int, int>& windowSize)
 double Player::getMovementSpeed() const
 {
     return movementSpeed_;
+}
+
+std::vector<std::pair<double, double>> Player::getCollisionTiles(std::pair<double, double>& currentOffset)
+{
+    // Order is:
+    // 0: Middle X, Top Y
+    // 1: Middle X, Bottom Y
+    // 2: Left X, Middle Y
+    // 3: Right X, Middle Y
+
+    // AKA
+    // 0: TOP
+    // 1: BOTTOM
+    // 2: LEFT
+    // 3: RIGHT
+
+    std::vector<std::pair<double, double>> tilesToCheck;
+    tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2), this->getY());
+    tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2),
+                              this->getY() + this->getHeight());
+    tilesToCheck.emplace_back(this->getX(), this->getY() + (this->getHeight()) / 2);
+    tilesToCheck.emplace_back(this->getX() + this->getWidth(),
+                              this->getY() + (this->getHeight()) / 2);
+    return tilesToCheck;
 }

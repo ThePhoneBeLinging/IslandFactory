@@ -17,6 +17,8 @@ class GameBoard
 public:
     explicit GameBoard(std::shared_ptr<EngineBase>& engineBase);
 
+    std::shared_ptr<Tile>& getTile(int firstIndex, int secondIndex);
+
     int getGridSideLength();
 
     void handleClicks(std::pair<int, int>& mousePosition);

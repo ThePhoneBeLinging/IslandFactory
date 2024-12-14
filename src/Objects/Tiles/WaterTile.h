@@ -12,6 +12,8 @@ class WaterTile : public Tile
 {
 public:
     WaterTile();
+
+    bool isWalkAble() override;
 };
 
 

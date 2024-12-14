@@ -6,17 +6,19 @@
 
 #include <thread>
 #include <utility>
+#include <iostream>
 
 GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBase)
-        : lmbPressed_(false), gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase),
-          player_(std::make_shared<Player>())
+    : lmbPressed_(false), gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase),
+      player_(std::make_shared<Player>())
 {
     engineBase_->registerDrawAble(player_);
 }
 
 void GameObjectController::handleMovement(const double deltaTime)
 {
-    //TODO Move all other objects
+    auto size = engineBase_->getGraphicsLibrary()->getWindowSize();
+    player_->moveToCenter(size);
     const double deltaMovement = player_->getMovementSpeed() * deltaTime;
     double deltaX = 0;
     double deltaY = 0;
@@ -58,11 +60,48 @@ void GameObjectController::handleMovement(const double deltaTime)
         currentOffset.second = maxOffset + windowSize.second;
     }
 
-    engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(currentOffset.first,
-                                                                                 currentOffset.second);
+    this->handleCollisionWithTerrain(currentOffset, deltaX, deltaY);
 
-    auto size = engineBase_->getGraphicsLibrary()->getWindowSize();
-    player_->moveToCenter(size);
+    engineBase_->getSceneController()->getCurrentDrawAbleController()->setOffset(currentOffset.first,
+        currentOffset.second);
+}
+
+void
+GameObjectController::handleCollisionWithTerrain(std::pair<double, double>& currentOffset, double deltaX, double deltaY)
+{
+    if (deltaX == 0 && deltaY == 0)
+    {
+        return;
+    }
+    const auto trueLocationsCollisionTiles = player_->getCollisionTiles(currentOffset);
+    std::vector<std::pair<int, int>> tileCords;
+    for (auto& val : trueLocationsCollisionTiles)
+    {
+        std::pair<int, int> tileVals;
+        tileVals.first = val.first;
+        tileVals.second = val.second;
+        tileVals.first -= currentOffset.first;
+        tileVals.second -= currentOffset.second;
+        tileVals.first /= Tile::TILESIZE;
+        tileVals.second /= Tile::TILESIZE;
+        tileCords.push_back(tileVals);
+    }
+    if (not gameBoard_->getTile(tileCords[0].first, tileCords[0].second)->isWalkAble())
+    {
+        currentOffset.second += player_->getY() - trueLocationsCollisionTiles[0].second - 1;
+    }
+    if (not gameBoard_->getTile(tileCords[1].first, tileCords[1].second)->isWalkAble())
+    {
+        currentOffset.second += trueLocationsCollisionTiles[1].second - (player_->getY() + player_->getHeight() - 1);
+    }
+    if (not gameBoard_->getTile(tileCords[2].first, tileCords[2].second)->isWalkAble())
+    {
+        currentOffset.first += player_->getX() - trueLocationsCollisionTiles[2].first - 1;
+    }
+    if (not gameBoard_->getTile(tileCords[3].first, tileCords[3].second)->isWalkAble())
+    {
+        currentOffset.first += trueLocationsCollisionTiles[3].first - (player_->getX() + player_->getWidth() - 1);
+    }
 }
 
 void GameObjectController::handleClicks()

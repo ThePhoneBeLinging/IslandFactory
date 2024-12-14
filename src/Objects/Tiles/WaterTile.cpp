@@ -9,3 +9,8 @@ WaterTile::WaterTile()
 {
     setTextureLocation(&TextureList::water);
 }
+
+bool WaterTile::isWalkAble()
+{
+    return false;
+}
