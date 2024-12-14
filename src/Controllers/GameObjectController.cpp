@@ -70,92 +70,35 @@ void GameObjectController::handleMovement(const double deltaTime)
 void
 GameObjectController::handleCollisionWithTerrain(std::pair<double, double>& currentOffset, double deltaX, double deltaY)
 {
-    // Check collision
-    // If collision, reduce offsetX, try again until x = 0
-    // If still collision, reset x, reduce offsetY, try again until y=0
-    // If still collision, both should be 0.
-
-    bool collisionDetected = true;
-
-    bool xValuesChecked = false;
-    bool yValuesChecked = false;
-    std::pair<double, double> localOffset = {currentOffset.first, currentOffset.second};
-    while (collisionDetected)
+    const auto trueLocationsCollisionTiles =player_->getCollisionTiles(currentOffset);
+    std::vector<std::pair<int, int>> tileCords;
+    for (auto& val: trueLocationsCollisionTiles)
     {
-        collisionDetected = false;
-        for (const auto& tileCords: player_->getCollisionTiles(localOffset))
-        {
-            if (not gameBoard_->getTile(tileCords.first, tileCords.second)->isWalkAble())
-            {
-                collisionDetected = true;
-
-                if (not xValuesChecked && localOffset.first != 0)
-                {
-                    if (localOffset.first > 1)
-                    {
-                        localOffset.first -= 1;
-                        if (localOffset.first < deltaX)
-                        {
-                            xValuesChecked = true;
-                        }
-                    }
-                    else if (localOffset.first < -1)
-                    {
-                        localOffset.first -= -1;
-                        if (localOffset.first > deltaX)
-                        {
-                            xValuesChecked = true;
-                        }
-                    }
-                    else
-                    {
-                        localOffset.first = 0;
-                        xValuesChecked = true;
-                    }
-                    break;
-                }
-
-                if (not yValuesChecked && localOffset.second != 0)
-                {
-                    if (localOffset.second > 1)
-                    {
-                        localOffset.second -= 1;
-                        if (localOffset.second < deltaY)
-                        {
-                            yValuesChecked = true;
-                        }
-                    }
-                    else if (localOffset.second < -1)
-                    {
-                        localOffset.second -= -1;
-                        if (localOffset.second < deltaY)
-                        {
-                            yValuesChecked = true;
-                        }
-                    }
-                    else
-                    {
-                        localOffset.second = 0;
-                        yValuesChecked = true;
-                    }
-                    break;
-                }
-            }
-        }
-        if (not(xValuesChecked && yValuesChecked))
-        {
-            if (xValuesChecked)
-            {
-                localOffset.first = currentOffset.first;
-            }
-            if (yValuesChecked)
-            {
-                localOffset.second = currentOffset.second;
-            }
-        }
-
+        std::pair<int,int> tileVals;
+        tileVals.first = val.first;
+        tileVals.second = val.second;
+        tileVals.first -= currentOffset.first;
+        tileVals.second -= currentOffset.second;
+        tileVals.first /= Tile::TILESIZE;
+        tileVals.second /= Tile::TILESIZE;
+        tileCords.push_back(tileVals);
     }
-    currentOffset = localOffset;
+    if (not gameBoard_->getTile(tileCords[0].first, tileCords[0].second)->isWalkAble())
+    {
+        currentOffset.second += player_->getY() - trueLocationsCollisionTiles[0].second + 1;
+    }
+    if (not gameBoard_->getTile(tileCords[1].first, tileCords[1].second)->isWalkAble())
+    {
+        currentOffset.second += trueLocationsCollisionTiles[1].second - (player_->getY() + player_->getHeight() - 1);
+    }
+    if (not gameBoard_->getTile(tileCords[2].first, tileCords[2].second)->isWalkAble())
+    {
+        currentOffset.first += player_->getX() - trueLocationsCollisionTiles[2].first + 1;
+    }
+    if (not gameBoard_->getTile(tileCords[3].first, tileCords[3].second)->isWalkAble())
+    {
+        currentOffset.first += trueLocationsCollisionTiles[3].first - (player_->getX() + player_->getWidth() - 1);
+    }
 }
 
 void GameObjectController::handleClicks()

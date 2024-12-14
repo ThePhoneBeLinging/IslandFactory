@@ -4,6 +4,9 @@
 
 #include "Player.h"
 
+#include <math.h>
+#include <valarray>
+
 #include "TextureList.h"
 #include "Tiles/Tile.h"
 
@@ -25,21 +28,19 @@ double Player::getMovementSpeed() const
     return movementSpeed_;
 }
 
-std::vector<std::pair<int, int>> Player::getCollisionTiles(std::pair<double, double>& currentOffset)
+std::vector<std::pair<double, double>> Player::getCollisionTiles(std::pair<double, double>& currentOffset)
 {
-    std::vector<std::pair<int, int>> tilesToCheck;
+    // Order is:
+    // 0: Middle X, Top Y
+    // 1: Middle X, Bottom Y
+    // 2: Left X, Middle Y
+    // 3: Right X, Middle Y
+    std::vector<std::pair<double, double>> tilesToCheck;
     tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2), this->getY());
     tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2),
                               this->getY() + this->getHeight());
     tilesToCheck.emplace_back(this->getX(), this->getY() + (this->getHeight()) / 2);
     tilesToCheck.emplace_back(this->getX() + this->getWidth(),
                               this->getY() + (this->getHeight()) / 2);
-    for (auto& val: tilesToCheck)
-    {
-        val.first -= currentOffset.first;
-        val.second -= currentOffset.second;
-        val.first /= Tile::TILESIZE;
-        val.second /= Tile::TILESIZE;
-    }
     return tilesToCheck;
 }

@@ -18,7 +18,7 @@ public:
 
     [[nodiscard]] double getMovementSpeed() const;
 
-    std::vector<std::pair<int, int>> getCollisionTiles(std::pair<double, double>& currentOffset);
+    std::vector<std::pair<double, double>> getCollisionTiles(std::pair<double, double>& currentOffset);
 
 private:
     double movementSpeed_;
