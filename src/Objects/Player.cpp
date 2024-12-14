@@ -35,6 +35,13 @@ std::vector<std::pair<double, double>> Player::getCollisionTiles(std::pair<doubl
     // 1: Middle X, Bottom Y
     // 2: Left X, Middle Y
     // 3: Right X, Middle Y
+
+    // AKA
+    // 0: TOP
+    // 1: BOTTOM
+    // 2: LEFT
+    // 3: RIGHT
+
     std::vector<std::pair<double, double>> tilesToCheck;
     tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2), this->getY());
     tilesToCheck.emplace_back(this->getX() + (this->getWidth() / 2),

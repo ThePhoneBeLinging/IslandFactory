@@ -23,6 +23,10 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
             {
                 tileMatrix_[i].emplace_back(std::make_shared<GrassTile>());
             }
+            else if (i == 15 || j == 15 || i == 16 || j == 16 || i == 17 || j == 17)
+            {
+                tileMatrix_[i].emplace_back(std::make_shared<GrassTile>());
+            }
             else
             {
                 tileMatrix_[i].emplace_back(std::make_shared<WaterTile>());
