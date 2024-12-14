@@ -5,11 +5,14 @@
 #include "IslandFactory.h"
 #include "Controllers/GameController.h"
 
-void IslandFactory::launch()
+IslandFactory::IslandFactory()
+    : engineBase_(std::make_shared<EngineBase>()), gameController_(std::make_shared<GameController>(engineBase_))
 {
-    engineBase_ = std::make_shared<EngineBase>();
-    gameController_ = std::make_shared<GameController>(engineBase_);
-    engineBase_->registerUpdateFunction(&update);
+    auto lambdaUpdate = [this](double deltaTime)
+    {
+        gameController_->update(deltaTime);
+    };
+    engineBase_->registerUpdateFunction(lambdaUpdate);
     engineBase_->launch();
 }
 

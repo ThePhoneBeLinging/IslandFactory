@@ -11,13 +11,13 @@
 class IslandFactory
 {
 public:
-    static void launch();
+    IslandFactory();
 
 private:
-    static void update(double deltaTime);
+    void update(double deltaTime);
 
-    static inline std::shared_ptr<EngineBase> engineBase_;
-    static inline std::shared_ptr<GameController> gameController_;
+    std::shared_ptr<EngineBase> engineBase_;
+    std::shared_ptr<GameController> gameController_;
 };
 
 
