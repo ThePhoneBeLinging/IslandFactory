@@ -11,6 +11,7 @@
 
 #include "Player.h"
 #include "EngineBase/EngineBase.h"
+#include "UI/Ui.h"
 
 
 class GameObjectController
@@ -29,6 +30,7 @@ private:
     std::shared_ptr<GameBoard> gameBoard_;
     std::shared_ptr<EngineBase> engineBase_;
     std::shared_ptr<Player> player_;
+    std::shared_ptr<Ui> ui_;
 };
 
 
