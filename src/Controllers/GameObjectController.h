@@ -28,7 +28,7 @@ public:
 private:
     bool lmbPressed_;
     std::shared_ptr<GameBoard> gameBoard_;
-    std::shared_ptr<EngineBase> engineBase_;
+    std::shared_ptr<EngineBase>& engineBase_;
     std::shared_ptr<Player> player_;
     std::shared_ptr<Ui> ui_;
 };

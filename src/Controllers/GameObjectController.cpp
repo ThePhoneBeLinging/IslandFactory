@@ -10,7 +10,7 @@
 
 GameObjectController::GameObjectController(std::shared_ptr<EngineBase>& engineBase)
     : lmbPressed_(false), gameBoard_(std::make_shared<GameBoard>(engineBase)), engineBase_(engineBase),
-      player_(std::make_shared<Player>()), ui_(std::make_shared<Ui>())
+      player_(std::make_shared<Player>()), ui_(std::make_shared<Ui>(engineBase))
 {
     engineBase_->registerDrawAble(player_);
 }

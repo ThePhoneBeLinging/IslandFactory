@@ -25,7 +25,7 @@ public:
 
 private:
     std::vector<std::vector<std::shared_ptr<Tile>>> tileMatrix_;
-    std::shared_ptr<EngineBase> engineBase_;
+    std::shared_ptr<EngineBase>& engineBase_;
 };
 
 

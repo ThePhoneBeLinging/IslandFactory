@@ -4,6 +4,6 @@
 
 #include "Ui.h"
 
-Ui::Ui() : hotbar_(std::make_shared<Hotbar>())
+Ui::Ui(std::shared_ptr<EngineBase>& engineBase) : hotbar_(std::make_shared<Hotbar>(engineBase))
 {
 }

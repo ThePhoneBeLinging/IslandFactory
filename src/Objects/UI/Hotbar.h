@@ -6,14 +6,16 @@
 #define HOTBAR_H
 #include <memory>
 #include <EngineBase/DrawAble.h>
+#include <EngineBase/EngineBase.h>
 
 
 class Hotbar
 {
 public:
-    Hotbar();
+    explicit Hotbar(std::shared_ptr<EngineBase>& engineBase);
 private:
-    std::unique_ptr<DrawAble> emptyHotbar_;
+    std::shared_ptr<EngineBase>& engineBase_;
+    std::shared_ptr<DrawAble> emptyHotbar_;
 };
 
 
