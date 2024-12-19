@@ -6,8 +6,7 @@
 
 Tile::Tile()
 {
-    setWidth(TILESIZE);
-    setHeight(TILESIZE);
+    setSize(TILESIZE,TILESIZE);
 }
 
 void Tile::onClick()
