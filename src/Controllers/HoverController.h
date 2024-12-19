@@ -14,7 +14,6 @@ class HoverController
 {
 public:
     HoverController() = default;
-private:
     void handleHovering(std::pair<int,int>& mousePos, std::shared_ptr<PlaceAble>& placeAble);
 };
 

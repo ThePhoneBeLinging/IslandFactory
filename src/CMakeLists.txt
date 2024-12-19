@@ -22,6 +22,8 @@ add_executable(IslandFactory
         Objects/PlaceAbles/CoalPlaceAble.h
         Objects/Tiles/CoalTile.cpp
         Objects/Tiles/CoalTile.h
+        Controllers/InventoryController.cpp
+        Controllers/InventoryController.h
 )
 
 

@@ -8,4 +8,10 @@
 
 PlaceAble::PlaceAble(std::shared_ptr<Tile> tileDrawAble) : tileDrawAble_(std::move(tileDrawAble))
 {
+    tileDrawAble_->setPositionIsAffectedByOffset(false);
+}
+
+std::shared_ptr<Tile>& PlaceAble::getTileDrawAble()
+{
+    return tileDrawAble_;
 }
