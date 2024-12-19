@@ -6,7 +6,8 @@
 #include <utility>
 
 GameController::GameController(std::shared_ptr<EngineBase>& engineBase)
-        : engineBase_(engineBase), gameObjectController_(std::make_unique<GameObjectController>(engineBase))
+        : engineBase_(engineBase), gameObjectController_(std::make_unique<GameObjectController>(engineBase)),
+        hoverController_(std::make_shared<HoverController>())
 {
 }
 
@@ -17,6 +18,7 @@ void GameController::update(const double deltaTime)
 
 void GameController::handleInput(const double deltaTime)
 {
+    auto mousePos = engineBase_->getGraphicsLibrary()->getMousePos();
     gameObjectController_->handleMovement(deltaTime);
-    gameObjectController_->handleClicks();
+    gameObjectController_->handleClicks(mousePos);
 }

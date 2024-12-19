@@ -7,6 +7,7 @@
 #include <memory>
 
 #include "GameObjectController.h"
+#include "HoverController.h"
 #include "EngineBase/EngineBase.h"
 
 
@@ -20,6 +21,7 @@ private:
     void handleInput(double deltaTime);
     std::shared_ptr<EngineBase> engineBase_;
     std::unique_ptr<GameObjectController> gameObjectController_;
+    std::shared_ptr<HoverController> hoverController_;
 };
 
 

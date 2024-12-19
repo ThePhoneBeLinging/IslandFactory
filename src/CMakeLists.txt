@@ -14,6 +14,14 @@ add_executable(IslandFactory
         Objects/Tiles/GrassTile.cpp
         Objects/Tiles/WaterTile.cpp
         Objects/Tiles/WaterTile.h
+        Controllers/HoverController.cpp
+        Controllers/HoverController.h
+        Objects/PlaceAbles/PlaceAble.cpp
+        Objects/PlaceAbles/PlaceAble.h
+        Objects/PlaceAbles/CoalPlaceAble.cpp
+        Objects/PlaceAbles/CoalPlaceAble.h
+        Objects/Tiles/CoalTile.cpp
+        Objects/Tiles/CoalTile.h
 )
 
 
