@@ -12,6 +12,7 @@ void HoverController::handleHovering(const std::pair<int, int>& mousePos, const 
     {
         return;
     }
+    // TODO Take currentOffset into account
     int modX = mousePos.first - (mousePos.first % Tile::TILESIZE);
     int modY = mousePos.second - (mousePos.second % Tile::TILESIZE);
 
