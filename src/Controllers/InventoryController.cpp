@@ -6,9 +6,11 @@
 
 #include "PlaceAbles/CoalPlaceAble.h"
 
-InventoryController::InventoryController(std::shared_ptr<EngineBase>& engineBase)
+InventoryController::InventoryController(const std::shared_ptr<EngineBase>& engineBase)
 {
     placeAbles_.push_back(std::make_shared<CoalPlaceAble>());
+
+    // TODO Implement proper inventory system
     engineBase->registerDrawAble(placeAbles_[0]->getTileDrawAble());
 }
 
