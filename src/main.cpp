@@ -2,6 +2,6 @@
 
 int main()
 {
-    IslandFactory::launch();
+    IslandFactory();
     return 0;
 }
