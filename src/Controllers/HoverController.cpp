@@ -8,6 +8,10 @@
 
 void HoverController::handleHovering(std::pair<int, int>& mousePos, std::shared_ptr<PlaceAble>& placeAble)
 {
+    if (placeAble == nullptr)
+    {
+        return;
+    }
     int modX = mousePos.first - (mousePos.first % Tile::TILESIZE);
     int modY = mousePos.second - (mousePos.second % Tile::TILESIZE);
 
