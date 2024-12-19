@@ -40,7 +40,7 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
     }
 }
 
-void GameBoard::handleClicks(std::pair<int, int>& mousePosition)
+void GameBoard::handleClicks(const std::pair<int, int>& mousePosition)
 {
     auto offset = engineBase_->getSceneController()->getCurrentDrawAbleController()->getCurrentUpdateOffset();
     int transformedX = (mousePosition.first + static_cast<int>(offset.first * -1)) / Tile::TILESIZE;

@@ -21,7 +21,7 @@ public:
 
     int getGridSideLength();
 
-    void handleClicks(std::pair<int, int>& mousePosition);
+    void handleClicks(const std::pair<int, int>& mousePosition);
 
 private:
     std::vector<std::vector<std::shared_ptr<Tile>>> tileMatrix_;

@@ -22,7 +22,7 @@ public:
 
     void handleCollisionWithTerrain(std::pair<double, double>& currentOffset, double deltaX, double deltaY);
 
-    void handleClicks(std::pair<int, int>& mousePos);
+    void handleClicks(const std::pair<int, int>& mousePos);
 
 private:
     bool lmbPressed_;

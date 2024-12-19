@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-void HoverController::handleHovering(std::pair<int, int>& mousePos, std::shared_ptr<PlaceAble>& placeAble)
+void HoverController::handleHovering(const std::pair<int, int>& mousePos, const std::pair<double,double>& currentOffset , std::shared_ptr<PlaceAble>& placeAble)
 {
     if (placeAble == nullptr)
     {

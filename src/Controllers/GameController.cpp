@@ -18,8 +18,8 @@ void GameController::update(const double deltaTime)
 
 void GameController::handleInput(const double deltaTime)
 {
-    auto mousePos = engineBase_->getGraphicsLibrary()->getMousePos();
+    const auto mousePos = engineBase_->getGraphicsLibrary()->getMousePos();
     gameObjectController_->handleMovement(deltaTime);
     gameObjectController_->handleClicks(mousePos);
-    hoverController_->handleHovering(mousePos,inventoryController_->getSelectedPlaceAble());
+    hoverController_->handleHovering(mousePos, engineBase_->getSceneController()->getCurrentDrawAbleController()->getCurrentUpdateOffset(),inventoryController_->getSelectedPlaceAble());
 }
