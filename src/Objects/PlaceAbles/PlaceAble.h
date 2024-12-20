@@ -11,7 +11,7 @@
 class PlaceAble
 {
 public:
-    explicit PlaceAble(std::shared_ptr<Tile> tileDrawAble);
+    explicit PlaceAble(const std::shared_ptr<Tile>& tileDrawAble);
     std::shared_ptr<Tile>& getTileDrawAble();
 protected:
     // TODO extend to allow for an interface, for selecting between 9 different placement tools.

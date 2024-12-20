@@ -6,9 +6,12 @@
 
 #include <utility>
 
-PlaceAble::PlaceAble(std::shared_ptr<Tile> tileDrawAble) : tileDrawAble_(std::move(tileDrawAble))
+#include "ZValues.h"
+
+PlaceAble::PlaceAble(const std::shared_ptr<Tile>& tileDrawAble) : tileDrawAble_(tileDrawAble)
 {
     tileDrawAble_->setPositionIsAffectedByOffset(false);
+    tileDrawAble->setZ(ZValues::PLACEABLEZ);
 }
 
 std::shared_ptr<Tile>& PlaceAble::getTileDrawAble()
