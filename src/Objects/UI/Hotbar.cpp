@@ -19,6 +19,7 @@ Hotbar::Hotbar(std::shared_ptr<EngineBase>& engineBase) : amountOfSlots_(8),engi
         emptySlots_.back()->setTextureLocation(&TextureList::itemSlot);
         engineBase->registerDrawAble(emptySlots_.back());
     }
+    placeAblesInSlots_.resize(amountOfSlots_);
 }
 
 void Hotbar::updateLocationInCaseOfResize()

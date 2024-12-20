@@ -8,6 +8,8 @@
 #include <EngineBase/DrawAble.h>
 #include <EngineBase/EngineBase.h>
 
+#include "PlaceAbles/PlaceAble.h"
+
 
 class Hotbar
 {
@@ -18,6 +20,7 @@ private:
     int amountOfSlots_;
     std::shared_ptr<EngineBase>& engineBase_;
     std::vector<std::shared_ptr<DrawAble>> emptySlots_;
+    std::vector<std::shared_ptr<PlaceAble>> placeAblesInSlots_;
 };
 
 
