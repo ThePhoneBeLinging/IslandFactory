@@ -11,12 +11,12 @@
 class IslandFactory
 {
 public:
-    IslandFactory();
+    explicit IslandFactory(std::shared_ptr<EngineBase>& engineBase);
 
 private:
     void update(double deltaTime);
 
-    std::shared_ptr<EngineBase> engineBase_;
+    std::shared_ptr<EngineBase>& engineBase_;
     std::shared_ptr<GameController> gameController_;
 };
 
