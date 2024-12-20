@@ -56,6 +56,10 @@ void GameBoard::handleBuildModeClicks(const std::pair<int, int>& mousePosition, 
     int transformedX = (mousePosition.first + static_cast<int>(offset.first * -1)) / Tile::TILESIZE;
     int transformedY = (mousePosition.second + static_cast<int>(offset.second * -1)) / Tile::TILESIZE;
 
+    if (tileMatrix_[transformedX][transformedY]->getTextureLocation() == placeAble->getTileDrawAble()->getTextureLocation())
+    {
+        return;
+    }
     tileMatrix_[transformedX][transformedY] = std::make_shared<CoalTile>();
     tileMatrix_[transformedX][transformedY]->setPosition(transformedX * Tile::TILESIZE, transformedY * Tile::TILESIZE);
     engineBase_->registerDrawAble(tileMatrix_[transformedX][transformedY]);
