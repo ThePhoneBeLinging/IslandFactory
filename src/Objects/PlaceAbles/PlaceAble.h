@@ -12,7 +12,9 @@ class PlaceAble
 {
 public:
     explicit PlaceAble(const std::shared_ptr<Tile>& tileDrawAble);
-    std::shared_ptr<Tile>& getTileDrawAble();
+    virtual ~PlaceAble() = default;
+    std::shared_ptr<Tile>& getTileByReference();
+    virtual std::shared_ptr<Tile> getTileByValue();
 protected:
     // TODO extend to allow for an interface, for selecting between 9 different placement tools.
     std::shared_ptr<Tile> tileDrawAble_;

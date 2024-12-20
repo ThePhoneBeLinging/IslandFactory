@@ -14,7 +14,12 @@ PlaceAble::PlaceAble(const std::shared_ptr<Tile>& tileDrawAble) : tileDrawAble_(
     tileDrawAble->setZ(ZValues::PLACEABLEZ);
 }
 
-std::shared_ptr<Tile>& PlaceAble::getTileDrawAble()
+std::shared_ptr<Tile>& PlaceAble::getTileByReference()
 {
     return tileDrawAble_;
+}
+
+std::shared_ptr<Tile> PlaceAble::getTileByValue()
+{
+    return std::make_shared<Tile>();
 }

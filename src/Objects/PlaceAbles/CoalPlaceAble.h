@@ -11,6 +11,7 @@ class CoalPlaceAble : public PlaceAble
 {
 public:
     CoalPlaceAble();
+    std::shared_ptr<Tile> getTileByValue() override;
 private:
 };
 

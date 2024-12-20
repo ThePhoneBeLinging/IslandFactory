@@ -11,7 +11,7 @@ InventoryController::InventoryController(const std::shared_ptr<EngineBase>& engi
     placeAbles_.push_back(std::make_shared<CoalPlaceAble>());
 
     // TODO Implement proper inventory system
-    engineBase->registerDrawAble(placeAbles_[0]->getTileDrawAble());
+    engineBase->registerDrawAble(placeAbles_[0]->getTileByReference());
 }
 
 std::shared_ptr<PlaceAble>& InventoryController::getSelectedPlaceAble()

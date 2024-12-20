@@ -9,3 +9,8 @@
 CoalPlaceAble::CoalPlaceAble() : PlaceAble(std::make_shared<CoalTile>())
 {
 }
+
+std::shared_ptr<Tile> CoalPlaceAble::getTileByValue()
+{
+    return std::make_shared<CoalTile>();
+}
