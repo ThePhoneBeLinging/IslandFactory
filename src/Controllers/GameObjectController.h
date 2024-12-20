@@ -11,6 +11,7 @@
 
 #include "Player.h"
 #include "EngineBase/EngineBase.h"
+#include "PlaceAbles/PlaceAble.h"
 
 
 class GameObjectController
@@ -22,7 +23,9 @@ public:
 
     void handleCollisionWithTerrain(std::pair<double, double>& currentOffset, double deltaX, double deltaY);
 
-    void handleClicks();
+    void handlePlayModeClicks(const std::pair<int, int>& mousePos);
+
+    void handleBuildModeClicks(const std::pair<int, int>& mousePos, std::shared_ptr<PlaceAble>& placeAble);
 
 private:
     bool lmbPressed_;

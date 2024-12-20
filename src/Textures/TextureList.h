@@ -13,6 +13,7 @@ public:
     const static inline std::string grass = "../Resources/grass.png";
     const static inline std::string water = "../Resources/waterTile.png";
     const static inline std::string zelda = "../Resources/zelda.png";
+    const static inline std::string coalOre = "../Resources/coalOre.png";
 };
 
 #endif //TEXTURELIST_H

@@ -104,19 +104,25 @@ GameObjectController::handleCollisionWithTerrain(std::pair<double, double>& curr
     }
 }
 
-void GameObjectController::handleClicks()
+void GameObjectController::handlePlayModeClicks(const std::pair<int, int>& mousePos)
 {
-    //TODO Handle clicks for HUD, not only for tiles
     if (not lmbPressed_ && engineBase_->getGraphicsLibrary()->isMouseButtonDown(ENGINEBASE_BUTTON_LEFT))
     {
         lmbPressed_ = true;
-        auto mousePos = engineBase_->getGraphicsLibrary()->getMousePos();
-        //TODO Handle clicks
-        gameBoard_->handleClicks(mousePos);
+        gameBoard_->handlePlayModeClicks(mousePos);
     }
 
     if (lmbPressed_ && not engineBase_->getGraphicsLibrary()->isMouseButtonDown(ENGINEBASE_BUTTON_LEFT))
     {
         lmbPressed_ = false;
+    }
+}
+
+void GameObjectController::handleBuildModeClicks(const std::pair<int, int>& mousePos,
+    std::shared_ptr<PlaceAble>& placeAble)
+{
+    if (engineBase_->getGraphicsLibrary()->isMouseButtonDown(ENGINEBASE_BUTTON_LEFT))
+    {
+        gameBoard_->handleBuildModeClicks(mousePos, placeAble);
     }
 }
