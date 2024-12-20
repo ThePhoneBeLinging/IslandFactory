@@ -4,9 +4,12 @@
 
 #include "Tile.h"
 
+#include "ZValues.h"
+
 Tile::Tile()
 {
     setSize(TILESIZE,TILESIZE);
+    setZ(ZValues::TILEZ);
 }
 
 void Tile::onClick()
