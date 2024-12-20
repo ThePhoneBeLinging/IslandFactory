@@ -12,7 +12,6 @@ void HoverController::handleHovering(const std::pair<int, int>& mousePos, const 
     {
         return;
     }
-    // TODO Take currentOffset into account
 
     int mousePosXWithOffset = mousePos.first - static_cast<int>(currentOffset.first) % 50;
     int mPosX = mousePosXWithOffset - mousePosXWithOffset % Tile::TILESIZE;
