@@ -7,13 +7,15 @@
 
 GameController::GameController(std::shared_ptr<EngineBase>& engineBase)
         : engineBase_(engineBase), gameObjectController_(std::make_unique<GameObjectController>(engineBase)),
-        inventoryController_(std::make_shared<InventoryController>(engineBase)),hoverController_(std::make_shared<HoverController>())
+ui_(std::make_shared<UI>(engineBase)), inventoryController_(std::make_shared<InventoryController>(engineBase)),
+hoverController_(std::make_shared<HoverController>())
 {
 }
 
 void GameController::update(const double deltaTime)
 {
     handleInput(deltaTime);
+    ui_->updateLocationInCaseOfResize();
 }
 
 void GameController::handleInput(const double deltaTime)

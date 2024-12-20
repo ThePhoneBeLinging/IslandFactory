@@ -10,6 +10,7 @@
 #include "HoverController.h"
 #include "InventoryController.h"
 #include "EngineBase/EngineBase.h"
+#include "UI/UI.h"
 
 
 class GameController
@@ -22,6 +23,7 @@ private:
     void handleInput(double deltaTime);
     std::shared_ptr<EngineBase> engineBase_;
     std::unique_ptr<GameObjectController> gameObjectController_;
+    std::shared_ptr<UI> ui_;
     std::shared_ptr<InventoryController> inventoryController_;
     std::shared_ptr<HoverController> hoverController_;
 };
