@@ -25,6 +25,10 @@ add_executable(IslandFactory
         Controllers/InventoryController.cpp
         Controllers/InventoryController.h
         Textures/ZValues.h
+        Objects/UI/UI.cpp
+        Objects/UI/UI.h
+        Objects/UI/Hotbar.cpp
+        Objects/UI/Hotbar.h
 )
 
 

@@ -11,6 +11,7 @@ public:
     static constexpr int PLAYERZ = 10;
     static constexpr int TILEZ = 0;
     static constexpr int PLACEABLEZ = 9;
+    static constexpr int UIZ = 20;
 
 };
 
