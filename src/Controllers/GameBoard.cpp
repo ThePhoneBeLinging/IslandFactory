@@ -8,14 +8,15 @@
 
 #include "../Objects/Tiles/GrassTile.h"
 #include "EngineBase/EngineBase.h"
+#include "Tiles/CoalTile.h"
 #include "Tiles/WaterTile.h"
 
 GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engineBase)
 {
-    int y = 0;
+    int x = 0;
     for (int i = 0; i < 150; i++)
     {
-        int x = 0;
+        int y = 0;
         tileMatrix_.emplace_back();
         for (int j = 0; j < 150; j++)
         {
@@ -31,12 +32,11 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
             {
                 tileMatrix_[i].emplace_back(std::make_shared<WaterTile>());
             }
-            tileMatrix_[i][j]->setX(x);
-            tileMatrix_[i][j]->setY(y);
+            tileMatrix_[i][j]->setPosition(x,y);
             engineBase_->registerDrawAble(tileMatrix_[i][j]);
-            x += Tile::TILESIZE;
+            y += Tile::TILESIZE;
         }
-        y += Tile::TILESIZE;
+        x += Tile::TILESIZE;
     }
 }
 
@@ -52,7 +52,13 @@ void GameBoard::handlePlayModeClicks(const std::pair<int, int>& mousePosition)
 
 void GameBoard::handleBuildModeClicks(const std::pair<int, int>& mousePosition, std::shared_ptr<PlaceAble>& placeAble)
 {
-    // TODO
+    auto offset = engineBase_->getSceneController()->getCurrentDrawAbleController()->getCurrentUpdateOffset();
+    int transformedX = (mousePosition.first + static_cast<int>(offset.first * -1)) / Tile::TILESIZE;
+    int transformedY = (mousePosition.second + static_cast<int>(offset.second * -1)) / Tile::TILESIZE;
+
+    tileMatrix_[transformedX][transformedY] = std::make_shared<CoalTile>();
+    tileMatrix_[transformedX][transformedY]->setPosition(transformedX * Tile::TILESIZE, transformedY * Tile::TILESIZE);
+    engineBase_->registerDrawAble(tileMatrix_[transformedX][transformedY]);
 }
 
 int GameBoard::getGridSideLength()

@@ -121,5 +121,8 @@ void GameObjectController::handlePlayModeClicks(const std::pair<int, int>& mouse
 void GameObjectController::handleBuildModeClicks(const std::pair<int, int>& mousePos,
     std::shared_ptr<PlaceAble>& placeAble)
 {
-    gameBoard_->handleBuildModeClicks(mousePos, placeAble);
+    if (engineBase_->getGraphicsLibrary()->isMouseButtonDown(ENGINEBASE_BUTTON_LEFT))
+    {
+        gameBoard_->handleBuildModeClicks(mousePos, placeAble);
+    }
 }
