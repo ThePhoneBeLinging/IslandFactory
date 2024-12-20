@@ -23,7 +23,5 @@ void HoverController::handleHovering(const std::pair<int, int>& mousePos, const 
     int mPosY = mousePosYWithOffset - mousePosYWithOffset % Tile::TILESIZE;
     int modY = mPosY + static_cast<int>(currentOffset.second) % Tile::TILESIZE;
 
-    std::cout << mousePos.first << " " << mousePos.second << std::endl;
-
     placeAble->getTileDrawAble()->setPosition(modX,modY);
 }
