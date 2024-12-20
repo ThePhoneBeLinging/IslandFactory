@@ -8,11 +8,13 @@
 #include <valarray>
 
 #include "TextureList.h"
+#include "ZValues.h"
 #include "Tiles/Tile.h"
 
 Player::Player()
 {
     this->setSize(50, 50);
+    this->setZ(ZValues::PLAYERZ);
     movementSpeed_ = 500;
     this->setPositionIsAffectedByOffset(false);
     this->setTextureLocation(&TextureList::zelda);

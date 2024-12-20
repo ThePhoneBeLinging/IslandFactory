@@ -24,6 +24,7 @@ add_executable(IslandFactory
         Objects/Tiles/CoalTile.h
         Controllers/InventoryController.cpp
         Controllers/InventoryController.h
+        Textures/ZValues.h
 )
 
 
