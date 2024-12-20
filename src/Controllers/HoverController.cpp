@@ -8,10 +8,6 @@
 
 void HoverController::handleHovering(const std::pair<int, int>& mousePos, const std::pair<double,double>& currentOffset , std::shared_ptr<PlaceAble>& placeAble)
 {
-    if (placeAble == nullptr)
-    {
-        return;
-    }
 
     int mousePosXWithOffset = mousePos.first - static_cast<int>(currentOffset.first) % 50;
     int mPosX = mousePosXWithOffset - mousePosXWithOffset % Tile::TILESIZE;

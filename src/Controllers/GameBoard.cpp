@@ -40,7 +40,7 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
     }
 }
 
-void GameBoard::handleClicks(const std::pair<int, int>& mousePosition)
+void GameBoard::handlePlayModeClicks(const std::pair<int, int>& mousePosition)
 {
     auto offset = engineBase_->getSceneController()->getCurrentDrawAbleController()->getCurrentUpdateOffset();
     int transformedX = (mousePosition.first + static_cast<int>(offset.first * -1)) / Tile::TILESIZE;
@@ -48,6 +48,11 @@ void GameBoard::handleClicks(const std::pair<int, int>& mousePosition)
 
     std::cout << "Tile pressed: " << transformedX << ", " << transformedY << std::endl;
     tileMatrix_[transformedX][transformedY]->onClick();
+}
+
+void GameBoard::handleBuildModeClicks(const std::pair<int, int>& mousePosition, std::shared_ptr<PlaceAble>& placeAble)
+{
+    // TODO
 }
 
 int GameBoard::getGridSideLength()

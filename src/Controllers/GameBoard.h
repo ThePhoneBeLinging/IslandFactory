@@ -10,6 +10,7 @@
 
 #include "Tiles/Tile.h"
 #include "EngineBase/EngineBase.h"
+#include "PlaceAbles/PlaceAble.h"
 
 
 class GameBoard
@@ -21,8 +22,9 @@ public:
 
     int getGridSideLength();
 
-    void handleClicks(const std::pair<int, int>& mousePosition);
+    void handlePlayModeClicks(const std::pair<int, int>& mousePosition);
 
+    void handleBuildModeClicks(const std::pair<int, int>& mousePosition, std::shared_ptr<PlaceAble>& placeAble);
 private:
     std::vector<std::vector<std::shared_ptr<Tile>>> tileMatrix_;
     std::shared_ptr<EngineBase> engineBase_;

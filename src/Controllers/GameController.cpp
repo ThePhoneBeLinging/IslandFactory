@@ -19,7 +19,15 @@ void GameController::update(const double deltaTime)
 void GameController::handleInput(const double deltaTime)
 {
     const auto mousePos = engineBase_->getGraphicsLibrary()->getMousePos();
+    auto activePlaceAble = inventoryController_->getSelectedPlaceAble();
+    if (activePlaceAble == nullptr)
+    {
+        gameObjectController_->handlePlayModeClicks(mousePos);
+    }
+    else
+    {
+        gameObjectController_->handleBuildModeClicks(mousePos,activePlaceAble);
+        hoverController_->handleHovering(mousePos,engineBase_->getSceneController()->getCurrentDrawAbleController()->getCurrentUpdateOffset(),activePlaceAble);
+    }
     gameObjectController_->handleMovement(deltaTime);
-    gameObjectController_->handleClicks(mousePos);
-    hoverController_->handleHovering(mousePos, engineBase_->getSceneController()->getCurrentDrawAbleController()->getCurrentUpdateOffset(),inventoryController_->getSelectedPlaceAble());
 }
