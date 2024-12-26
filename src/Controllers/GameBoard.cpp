@@ -8,6 +8,7 @@
 
 #include "../Objects/Tiles/GrassTile.h"
 #include "EngineBase/EngineBase.h"
+#include "Factories/Factory.h"
 #include "Tiles/CoalTile.h"
 #include "Tiles/WaterTile.h"
 
@@ -20,6 +21,10 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
         tileMatrix_.emplace_back();
         for (int j = 0; j < 150; j++)
         {
+            if (i == 6 && j == 10)
+            {
+                tileMatrix_[i].emplace_back(std::make_shared<Factory>());
+            }
             if (i < 15 && j < 15)
             {
                 tileMatrix_[i].emplace_back(std::make_shared<GrassTile>());

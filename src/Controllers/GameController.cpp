@@ -28,8 +28,8 @@ void GameController::handleInput(const double deltaTime)
     }
     else
     {
-        gameObjectController_->handleBuildModeClicks(mousePos,activePlaceAble);
-        hoverController_->handleHovering(mousePos,engineBase_->getSceneController()->getCurrentDrawAbleController()->getCurrentUpdateOffset(),activePlaceAble);
+        //gameObjectController_->handleBuildModeClicks(mousePos,activePlaceAble);
+        //hoverController_->handleHovering(mousePos,engineBase_->getSceneController()->getCurrentDrawAbleController()->getCurrentUpdateOffset(),activePlaceAble);
     }
     gameObjectController_->handleMovement(deltaTime);
 }

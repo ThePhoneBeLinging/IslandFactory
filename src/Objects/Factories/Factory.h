@@ -4,13 +4,16 @@
 
 #ifndef FACTORY_H
 #define FACTORY_H
+#include <Tiles/Tile.h>
 
 
-
-class Factory {
-
+class Factory : public Tile
+{
+public:
+    Factory();
+    void onClick() override;
+private:
 };
-
 
 
 #endif //FACTORY_H
