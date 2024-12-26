@@ -29,6 +29,8 @@ add_executable(IslandFactory
         Objects/UI/UI.h
         Objects/UI/Hotbar.cpp
         Objects/UI/Hotbar.h
+        Objects/Factories/Factory.cpp
+        Objects/Factories/Factory.h
 )
 
 
