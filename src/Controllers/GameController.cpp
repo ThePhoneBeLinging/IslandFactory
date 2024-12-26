@@ -21,7 +21,7 @@ void GameController::update(const double deltaTime)
 void GameController::handleInput(const double deltaTime)
 {
     const auto mousePos = engineBase_->getGraphicsLibrary()->getMousePos();
-    auto activePlaceAble = inventoryController_->getSelectedPlaceAble();
+    auto activePlaceAble = nullptr;//inventoryController_->getSelectedPlaceAble();
     if (activePlaceAble == nullptr)
     {
         gameObjectController_->handlePlayModeClicks(mousePos);
