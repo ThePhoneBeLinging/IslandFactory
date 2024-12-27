@@ -23,7 +23,7 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
         {
             if (i == 6 && j == 10)
             {
-                tileMatrix_[i].emplace_back(std::make_shared<Factory>());
+                tileMatrix_[i].emplace_back(std::make_shared<Factory>(engineBase_));
             }
             if (i < 15 && j < 15)
             {
@@ -38,7 +38,6 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
                 tileMatrix_[i].emplace_back(std::make_shared<WaterTile>());
             }
             tileMatrix_[i][j]->setPosition(x,y);
-            tileMatrix_[i][j]->setEngineBase(engineBase_);
             engineBase_->registerDrawAble(tileMatrix_[i][j]);
             y += Tile::TILESIZE;
         }

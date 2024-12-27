@@ -10,33 +10,22 @@
 
 #include "ZValues.h"
 
-Factory::Factory()
+Factory::Factory(std::shared_ptr<EngineBase>& _enginebase): engineBase(_enginebase)
 {
     setTextureLocation(&TextureList::factory);
 }
 
 void Factory::onClick()
 {
-    uint8_t iterator = 100;
-    while (iterator > 0)
-    {
-        if (auto enginebase = enginebase_.lock())
-        {
-            createFactoryMenu(enginebase);
-        }
-        iterator--;
-    }
-
-
+    createFactoryMenu(engineBase);
 }
 
 void Factory::createFactoryMenu(std::shared_ptr<EngineBase> &engine_base)
 {
     //std::cout << "Dean" << std::endl;
     _menuDrawable = std::make_shared<DrawAble>();
-    _menuDrawable->setSize(20,20);
+    _menuDrawable->setSize(20, 20);
     _menuDrawable->setTextureLocation(&TextureList::coalOre);
     _menuDrawable->setZ(ZValues::FACTORYZ);
     engine_base->registerDrawAble(_menuDrawable);
-
 }
