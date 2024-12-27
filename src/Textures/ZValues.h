@@ -12,7 +12,7 @@ public:
     static constexpr int TILEZ = 0;
     static constexpr int PLACEABLEZ = 9;
     static constexpr int UIZ = 20;
-
+    static constexpr int FACTORYZ = 21;
 };
 
 #endif //ZVALUES_H
