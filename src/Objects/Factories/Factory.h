@@ -11,7 +11,7 @@
 class Factory : public Tile
 {
 public:
-    Factory(std::shared_ptr<EngineBase>& _enginebase);
+    explicit Factory(std::shared_ptr<EngineBase>& _enginebase);
     void onClick() override;
     void createFactoryMenu(std::shared_ptr<EngineBase> &engine_base);
 private:

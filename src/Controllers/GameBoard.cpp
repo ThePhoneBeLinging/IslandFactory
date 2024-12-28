@@ -23,7 +23,7 @@ GameBoard::GameBoard(std::shared_ptr<EngineBase>& engineBase) : engineBase_(engi
         {
             if (i == 6 && j == 10)
             {
-                tileMatrix_[i].emplace_back(std::make_shared<Factory>(engineBase_));
+                tileMatrix_[i].emplace_back(std::make_shared<Factory>(engineBase));
             }
             if (i < 15 && j < 15)
             {
